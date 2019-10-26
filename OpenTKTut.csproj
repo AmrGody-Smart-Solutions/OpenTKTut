@@ -52,6 +52,8 @@
     <Compile Include="SceenEngine_Private.cs" />
     <Compile Include="SceneEngine_Shapes.cs" />
     <Compile Include="Shapes\Cube.cs" />
+    <Compile Include="Shapes\MeshElement.cs" />
+    <Compile Include="Shapes\MeshElement_Statics.cs" />
     <Compile Include="Shapes\OGLShape.cs" />
     <Compile Include="Shapes\Sphere.cs" />
   </ItemGroup>

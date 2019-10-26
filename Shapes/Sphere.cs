@@ -16,16 +16,31 @@ namespace OpenTKTut.Shapes
             EnableAutoRotate = AutoRotate;
         }
 
-        public Vector3 Center { get; set; }
-        public double Radius { get; set; }
         
-
-        public override void Draw()
+        public double Radius { get; set; }
+       
+        protected override void ShapeDrawing()
         {
-            base.Draw();
-            GL.PushMatrix();
+            base.ShapeDrawing();
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
+            MeshElement[] shapePolygons = MeshElement.Sphere(Radius);
+            GL.Begin(BeginMode.Quads);
+            for(int i=0;i< shapePolygons.Length;i++)
+            {
+                GL.Normal3(shapePolygons[i].Normal);
+                for(int j=0;j<shapePolygons[i].Vertices.Length;j++)
+                {
+                    GL.Vertex3(shapePolygons[i].Vertices[j]);
+                }
+               
+            }
+            GL.End();
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+        }
 
-            GL.PopMatrix();
+        private Vector3[] ConstructMesh()
+        {
+            throw new NotImplementedException();
         }
     }
 }

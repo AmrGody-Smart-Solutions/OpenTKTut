@@ -26,6 +26,9 @@ namespace OpenTKTut
             
             cube = new Shapes.Cube(new Vector3(10.0f, 10.0f, 40.0f), 3.0f, true);
             sceenEngine.AddShape(cube);
+
+            Shapes.Sphere sp = new Shapes.Sphere(new Vector3( 10.0f,15.0f,50.0f), 5, true);
+            sceenEngine.AddShape(sp);
             sceenEngine.Start();
            //sceenEngine.AddShape()
         }
