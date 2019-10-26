@@ -33,6 +33,9 @@ namespace OpenTKTut
             sp = new Shapes.Sphere(new Vector3(-20.0f, 20.0f, 80.0f), 5, true);
             sceenEngine.AddShape(sp);
 
+            sp = new Shapes.Sphere(new Vector3(5.0f, -5.0f, 30.0f), 3, false);
+            sceenEngine.AddShape(sp);
+
             sceenEngine.Start();
            //sceenEngine.AddShape()
         }

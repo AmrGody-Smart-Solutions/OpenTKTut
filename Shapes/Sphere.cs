@@ -37,6 +37,8 @@ namespace OpenTKTut.Shapes
             }
             GL.End();
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+
+            
         }
 
         private Vector3[] ConstructMesh()
