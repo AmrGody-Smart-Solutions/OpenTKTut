@@ -1,17 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="OpenTKTut.Shapes.Cube">
-    <Position X="3.25" Y="4.5" Width="1.5" />
+    <Position X="7" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAABAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Shapes\Cube.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OpenTKTut.Shapes.OGLShape" Collapsed="true">
-    <Position X="5.25" Y="1" Width="1.5" />
+  <Class Name="OpenTKTut.Shapes.OGLShape">
+    <Position X="8" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAABAgBAAAAAAAAAAABAAAAAQAAAAAAIAAA=</HashCode>
       <FileName>Shapes\OGLShape.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="MeshPolygons" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OpenTKTut.SceenEngine">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAIAAAAiAAAgAAAAAAAEAAAAAAAAAAAACAAAABEAA=</HashCode>
+      <FileName>SceenEngine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="_window" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_drawingList" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OpenTK.GameWindow" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenTKTut.Shapes.Sphere">
+    <Position X="9.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shapes\Sphere.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenTKTut.Shapes.MeshElement" Collapsed="true">
+    <Position X="11.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABEAAAAAAAAAAAAAAAQAAAAAAAIIAAAAEAAAAAQAAAA=</HashCode>
+      <FileName>Shapes\MeshElement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -11,7 +11,12 @@ namespace OpenTKTut.Shapes
     {
         public bool EnableAutoRotate { get; set; }
         public Vector3 Center { get; set; }
-        protected float _rotateAngle; 
+        
+        public MeshElement[] MeshPolygons { get => meshPolygons; set => meshPolygons = value; }
+
+        protected float _rotateAngle;
+        private MeshElement[] meshPolygons;
+
         public virtual void Draw()
         {
             GL.PushMatrix();
@@ -34,7 +39,7 @@ namespace OpenTKTut.Shapes
         {
             //Add any common drawing for all shapes in this part
         }
-        
-        
+
+
     }
 }

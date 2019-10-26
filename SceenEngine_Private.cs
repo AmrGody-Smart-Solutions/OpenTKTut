@@ -27,8 +27,17 @@ namespace OpenTKTut
         {
             GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             GL.Enable(EnableCap.DepthTest);
+            //Lights
 
-            GL.Enable(EnableCap.Texture2D);
+            GL.Enable(EnableCap.Lighting);
+            //GL.Enable(EnableCap.ColorMaterial);
+            GL.Light(LightName.Light0, LightParameter.Position, new float[] { -20.0f, 30.0f, 20.0f });
+            GL.Light(LightName.Light0, LightParameter.Diffuse,new float[] { 1.0f, 1.0f, 1.0f });
+            GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 1.0f, 1.0f, 0.0f });
+            GL.Enable(EnableCap.Light0);
+           // GL.ShadeModel(ShadingModel.Smooth);
+            
+           // GL.Enable(EnableCap.Texture2D);
         }
 
         private void _window_Resize(object sender, EventArgs e)

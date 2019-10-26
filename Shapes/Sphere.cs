@@ -22,15 +22,16 @@ namespace OpenTKTut.Shapes
         protected override void ShapeDrawing()
         {
             base.ShapeDrawing();
-            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-            MeshElement[] shapePolygons = MeshElement.Sphere(Radius);
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+            MeshPolygons= MeshElement.Sphere(Radius);
             GL.Begin(BeginMode.Quads);
-            for(int i=0;i< shapePolygons.Length;i++)
+            GL.Color3(new float[] { 1.0f, 1.0f, 0.0f });
+            for(int i=0;i< MeshPolygons.Length;i++)
             {
-                GL.Normal3(shapePolygons[i].Normal);
-                for(int j=0;j<shapePolygons[i].Vertices.Length;j++)
+                GL.Normal3(MeshPolygons[i].Normal);
+                for(int j=0;j< MeshPolygons[i].Vertices.Length;j++)
                 {
-                    GL.Vertex3(shapePolygons[i].Vertices[j]);
+                    GL.Vertex3(MeshPolygons[i].Vertices[j]);
                 }
                
             }
