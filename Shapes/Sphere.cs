@@ -1,4 +1,29 @@
-﻿using System;
+﻿/*H**********************************************************************
+* FILENAME :        Sphere.cs             DESIGN REF: OGLTUT05
+*
+* DESCRIPTION :
+*       Sphere object  functions.
+*
+* PUBLIC FUNCTIONS :
+*       
+*       void     ShapeDrawing(  )
+*      
+*
+* NOTES :
+*       These functions are a part of the Computer Graphics course materias suite;
+*      
+*
+*       Copyright Amr M. Gody. 2019, 2019.  All rights reserved.
+*
+* AUTHOR :    Amr M. Gody        START DATE :    24 OCT 2019
+*
+* CHANGES :
+*
+* REF NO  VERSION DATE    WHO     DETAIL
+* 1       1       24OCT19 AG      first working version
+*
+*******************************************************************************H*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

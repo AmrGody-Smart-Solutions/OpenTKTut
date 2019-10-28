@@ -1,4 +1,30 @@
-﻿using System;
+﻿/*H**********************************************************************
+* FILENAME :        Program.cs             DESIGN REF: OGLTUT05
+*
+* DESCRIPTION :
+*       starting code.
+*
+* PUBLIC FUNCTIONS :
+*       
+*       void Main(string[] args)
+*      
+*
+* NOTES :
+*       These functions are a part of the Computer Graphics course materias suite;
+*      
+*
+*       Copyright Amr M. Gody. 2019, 2019.  All rights reserved.
+*
+* AUTHOR :    Amr M. Gody        START DATE :    24 OCT 2019
+*
+* CHANGES :
+*
+* REF NO  VERSION DATE    WHO     DETAIL
+* 1       1       24OCT19 AG      first working version
+*
+*******************************************************************************H*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
