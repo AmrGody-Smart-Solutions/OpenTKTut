@@ -30,8 +30,8 @@ namespace OpenTKTut.Shapes
                     Vector3 _2 = GetCartezianOf(radius, theta + dlta, phi);
                     Vector3 _3 = GetCartezianOf(radius, theta + dlta, phi + dlta);
                     Vector3 _4 = GetCartezianOf(radius, theta, phi + dlta);
-
-                    Vector3 normal = GetNormal(_1, _2, _4);
+                    Vector3 normal = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_1, _2, _4);
+                    //Vector3 normal = GetNormal(_1, _2, _4);
                     Vector3[] vertices = { _1, _2, _3, _4 };
                     res.Add(new MeshElement(4, normal, vertices));
 

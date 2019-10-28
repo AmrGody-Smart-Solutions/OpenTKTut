@@ -42,7 +42,7 @@
       <FileName>Shapes\Sphere.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OpenTKTut.Shapes.MeshElement" Collapsed="true">
+  <Class Name="OpenTKTut.Shapes.MeshElement">
     <Position X="11.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABEAAAAAAAAAAAAAAAQAAAAAAAIIAAAAEAAAAAQAAAA=</HashCode>
