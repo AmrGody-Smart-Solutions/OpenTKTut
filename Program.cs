@@ -53,17 +53,25 @@ namespace OpenTKTut
             cube = new Shapes.Cube(new Vector3(10.0f, -10.0f, 40.0f), 3.0f, true);
             sceenEngine.AddShape(cube);
 
+            Shapes.SlaveSphere moon = new Shapes.SlaveSphere(cube, 1, 3);
+            sceenEngine.AddShape(moon);
+
             Shapes.Sphere sp = new Shapes.Sphere(new Vector3( 0.0f,0.0f,50.0f), 5, true);
             sceenEngine.AddShape(sp);
 
+            moon = new Shapes.SlaveSphere(sp, 2, 6);
+            sceenEngine.AddShape(moon);
+
             sp = new Shapes.Sphere(new Vector3(-20.0f, 20.0f, 80.0f), 5, true);
             sceenEngine.AddShape(sp);
+
+            moon = new Shapes.SlaveSphere(sp, 2, 6);
+            sceenEngine.AddShape(moon);
 
             sp = new Shapes.Sphere(new Vector3(5.0f, -5.0f, 30.0f), 3, false);
             sceenEngine.AddShape(sp);
 
             sceenEngine.Start();
-           //sceenEngine.AddShape()
         }
     }
 }
