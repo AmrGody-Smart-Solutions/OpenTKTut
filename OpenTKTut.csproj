@@ -58,6 +58,7 @@
     <Compile Include="Shapes\MeshElement.cs" />
     <Compile Include="Shapes\MeshElement_Statics.cs" />
     <Compile Include="Shapes\OGLShape.cs" />
+    <Compile Include="Shapes\SlaveSphere.cs" />
     <Compile Include="Shapes\Sphere.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -35,6 +35,9 @@ namespace OpenTKTut.Shapes
     class OGLShape
     {
         public bool EnableAutoRotate { get; set; }
+        public bool EnableMasterRotate { get; set; }
+
+        public OGLShape Master { get; set; }
         public Vector3 Center { get; set; }
         
         public MeshElement[] MeshPolygons { get => meshPolygons; set => meshPolygons = value; }
@@ -46,16 +49,25 @@ namespace OpenTKTut.Shapes
         {
             GL.PushMatrix();
             GL.Translate(Center.X, Center.Y, -Center.Z);
+
+            if (EnableMasterRotate){
+                GL.Translate(-Center.X, -Center.Y, Center.Z);         
+                GL.Translate(Master.Center.X, Master.Center.Y, -Master.Center.Z);
+                GL.Rotate(_rotateAngle, 1f, -1f, 0.0f);
+                _rotateAngle = _rotateAngle < 360 ? _rotateAngle + 1 : _rotateAngle - 360;
+
+                GL.Translate(-Master.Center.X, -Master.Center.Y, Master.Center.Z);
+                GL.Translate(Center.X, Center.Y, -Center.Z);
+
+            }
+
             if (EnableAutoRotate)
             {
-                if (EnableAutoRotate)
-                {
-
-                    GL.Rotate(_rotateAngle, Vector3.UnitX);
-                    GL.Rotate(_rotateAngle, Vector3.UnitZ);
-                    _rotateAngle = _rotateAngle < 360 ? _rotateAngle + 1 : _rotateAngle - 360;
-                }
+                GL.Rotate(_rotateAngle, Vector3.UnitX);
+                GL.Rotate(_rotateAngle, Vector3.UnitZ);
+                _rotateAngle = _rotateAngle < 360 ? _rotateAngle + 1 : _rotateAngle - 360;
             }
+
             ShapeDrawing();
             GL.PopMatrix();
         }
