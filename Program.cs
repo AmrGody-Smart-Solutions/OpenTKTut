@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
@@ -28,6 +29,8 @@ namespace OpenTKTut
             sceenEngine.AddShape(cube);
 
             Shapes.Sphere sp = new Shapes.Sphere(new Vector3( 0.0f,0.0f,50.0f), 5, true);
+            string earth = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\Textures\BigEarth.bmp";
+            var st = sp.LoadTexture(earth);
             sceenEngine.AddShape(sp);
 
             sp = new Shapes.Sphere(new Vector3(-20.0f, 20.0f, 80.0f), 5, true);

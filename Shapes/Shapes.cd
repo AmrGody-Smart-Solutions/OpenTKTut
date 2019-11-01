@@ -38,14 +38,21 @@
   <Class Name="OpenTKTut.Shapes.Sphere">
     <Position X="9.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAMAAAAAAABQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Shapes\Sphere.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OpenTKTut.Shapes.MeshElement" Collapsed="true">
+  <Class Name="OpenTKTut.Shapes.MeshElement">
     <Position X="11.75" Y="5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="OpenTKTut.Shapes.MeshElement.MatrixFormat" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Shapes\MeshElement.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>ABEAAAAAAAAAAAAAAAQAAAAAAAIIAAAAEAAAAAQAAAA=</HashCode>
+      <HashCode>ABFEAAAAAAAAAAAAAAQAAAAAAAIIAAAAEAAAAAQAAAA=</HashCode>
       <FileName>Shapes\MeshElement.cs</FileName>
     </TypeIdentifier>
   </Class>

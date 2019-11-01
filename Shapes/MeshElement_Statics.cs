@@ -41,7 +41,23 @@ namespace OpenTKTut.Shapes
 
             return res.ToArray();
         }
-
+        /// <summary>
+        /// Loads a bitmap image into bitmapData object. It assumes 24 bit bmp format
+        /// </summary>
+        /// <param name="imagePath"></param>
+        /// <param name="bitmapData"></param>
+        /// <returns></returns>
+        public static bool LoadImageIntoBitMapData_rgb24bit(string imagePath,out  System.Drawing.Imaging.BitmapData bitmapData)
+        {
+            bool res = true;
+            bitmapData = new System.Drawing.Imaging.BitmapData();
+            var bmp = new System.Drawing.Bitmap(imagePath);
+            var imageRect = new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height);
+            bitmapData = bmp.LockBits(imageRect, System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            bmp.UnlockBits(bitmapData);
+            res = bitmapData.Width == bmp.Width && bitmapData.Height == bmp.Height;
+            return res;
+        }
         private static Vector3 GetNormal(Vector3 p1, Vector3 p2, Vector3 p3)
         {
             Vector3 res = new Vector3();
@@ -74,5 +90,6 @@ namespace OpenTKTut.Shapes
             Vector3 _1 = new Vector3(x, y, z);
             return _1;
         }
+
     }
 }

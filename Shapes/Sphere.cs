@@ -15,15 +15,26 @@ namespace OpenTKTut.Shapes
             Radius = radius;
             EnableAutoRotate = AutoRotate;
         }
-
-        
+        public bool TextureEnabled { get; private set; }
+        public bool LoadTexture(string imagePath)
+        {
+            bool res = true;
+            res = MeshElement.LoadImageIntoBitMapData_rgb24bit(imagePath, out var bitmapData);
+            _textureBitmapData = bitmapData;
+            TextureEnabled = res;
+            return res;
+        }
         public double Radius { get; set; }
-       
+        public System.Drawing.Imaging.BitmapData _textureBitmapData { get; private set; }
         protected override void ShapeDrawing()
         {
             base.ShapeDrawing();
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons= MeshElement.Sphere(Radius);
+            if (TextureEnabled)
+            {
+                var st =  MeshElement.LoadTexture(MeshPolygons, _textureBitmapData,18,36, MeshElement.MatrixFormat.RowBased);
+            }
             GL.Begin(BeginMode.Quads);
             GL.Color3(new float[] { 1.0f, 1.0f, 0.0f });
             for(int i=0;i< MeshPolygons.Length;i++)
@@ -41,9 +52,6 @@ namespace OpenTKTut.Shapes
             
         }
 
-        private Vector3[] ConstructMesh()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
