@@ -50,7 +50,7 @@ namespace OpenTKTut.Shapes
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons= MeshElement.Sphere(Radius);
             GL.Begin(BeginMode.Quads);
-            GL.Color3(new float[] { 1.0f, 1.0f, 0.0f });
+            GL.Color3(new float[] { 0.0f, 0.0f, 0.8f });
             for(int i=0;i< MeshPolygons.Length;i++)
             {
                 GL.Normal3(MeshPolygons[i].Normal);

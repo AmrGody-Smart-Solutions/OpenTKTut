@@ -1,4 +1,4 @@
-/*H**********************************************************************
+﻿/*H**********************************************************************
 * FILENAME :        SceenEngine_Private.cs             DESIGN REF: OGLTUT05
 *
 * DESCRIPTION :
@@ -50,16 +50,16 @@ namespace OpenTKTut
 
         private void _window_Load(object sender, EventArgs e)
         {
-            GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            GL.ClearColor(0.2f, 0.2f, 0.2f, 0.2f);
             GL.Enable(EnableCap.DepthTest);
             //Lights
 
             GL.Enable(EnableCap.Lighting);
-            //GL.Enable(EnableCap.ColorMaterial);
+            GL.Enable(EnableCap.ColorMaterial);
             GL.Light(LightName.Light0, LightParameter.Position, new float[] { 20.0f, 0.0f,40.0f });
             //GL.Light(LightName.Light0, LightParameter.Diffuse,new float[] { 1.0f, 1.0f, 1.0f });
             GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 1.0f, 0.0f, 0.0f });
-            GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 1.0f, 1.0f, 0.0f });
+            //GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 1.0f, 1.0f, 0.0f });
             GL.Enable(EnableCap.Light0);
            // GL.ShadeModel(ShadingModel.Smooth);
             
