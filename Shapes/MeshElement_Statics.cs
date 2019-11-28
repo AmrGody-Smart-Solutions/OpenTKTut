@@ -37,7 +37,6 @@ namespace OpenTKTut.Shapes
         public static MeshElement[] Sphere(double radius)
         {
             List<MeshElement> res = new List<MeshElement>();
-            
             int dlta = 10;
             double delta = Convert.ToDouble(dlta) * _converter_factor;
             for (int theta = 0;theta<=180-dlta;theta += dlta )

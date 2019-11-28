@@ -41,7 +41,7 @@ namespace OpenTKTut
 
 
 
-            Shapes.Cube cube = new Shapes.Cube(new Vector3(0.0f, 20.0f, 80.0f), 10.0f, true);
+            Shapes.Cube cube = new Shapes.Cube(new Vector3(0.0f, 20.0f, 80.0f), 5, true);
             sceenEngine.AddShape(cube);
 
             cube = new Shapes.Cube(new Vector3(-10.0f, -7.0f, 35.0f), 5.0f, true);
@@ -59,11 +59,14 @@ namespace OpenTKTut
             sp = new Shapes.Sphere(new Vector3(-20.0f, 20.0f, 80.0f), 5, true);
             sceenEngine.AddShape(sp);
 
-            sp = new Shapes.Sphere(new Vector3(5.0f, -5.0f, 30.0f), 3, false);
+            sp = new Shapes.Sphere(new Vector3(5.0f, -5.0f, 30.0f), 1, false);
             sceenEngine.AddShape(sp);
-
+            sp = new Shapes.Sphere(new Vector3(00.0f, 20.0f, 90.0f), 1, new Vector3(0.0f, 20.0f, 80.0f), true, true);
+            sceenEngine.AddShape(sp);
+            
             sceenEngine.Start();
-           //sceenEngine.AddShape()
+            
+            //sceenEngine.AddShape()
         }
     }
 }

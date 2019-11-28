@@ -33,14 +33,15 @@ namespace OpenTKTut.Shapes
 {
     class Cube : OGLShape
     {
-        public Cube(Vector3 center, double length,bool enableRotation = false)
+        public Cube(Vector3 center, double length, bool enableRotation = false)
         {
             Center = center;
             Length = length;
             EnableAutoRotate = enableRotation;
+            EnableAutoRotate_at_other_place = false;
         }
 
-       
+
         public double Length { get; set; }
 
         protected override void ShapeDrawing()
@@ -49,6 +50,13 @@ namespace OpenTKTut.Shapes
             GL.Begin(BeginMode.Quads);
 
             //Front Face
+            var _p1 = new Vector3d(-Length / 2, -Length / 2, Length / 2);
+            var _p2 = new Vector3d(Length / 2, -Length / 2, Length / 2);
+            var _p3 = new Vector3d(Length / 2, Length / 2, Length / 2);
+            Vector3d a = _p2 - _p1;
+            Vector3d b = _p3 - _p1;
+            var temp = Vector3d.Cross(a, b);
+            temp.Normalize();
 
             GL.Color3(1.0f, 0.0f, 0.0f);
             GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
@@ -56,37 +64,73 @@ namespace OpenTKTut.Shapes
             GL.Vertex3(Length / 2, Length / 2, Length / 2);
             GL.Vertex3(-Length / 2, Length / 2, Length / 2);
             //Rear Face
+            GL.Normal3(temp);
 
-            GL.Color3(1.0f, 1.0f, 0.0f);
+            _p1 = new Vector3d(-Length / 2, -Length / 2, -Length / 2);
+            _p2 = new Vector3d(Length / 2, -Length / 2, -Length / 2);
+            _p3 = new Vector3d(Length / 2, Length / 2, -Length / 2);
+            a = _p2 - _p1;
+            b = _p3 - _p1;
+            temp = Vector3d.Cross(a, b);
+            temp.Normalize();
+
+            GL.Color3(0.0f, 1.0f, 0.0f);
             GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
             GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
             GL.Vertex3(Length / 2, Length / 2, -Length / 2);
             GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
+            GL.Normal3(temp);
 
             //Rear Left
+            _p1 = new Vector3d(-Length / 2, -Length / 2, -Length / 2);
+            _p2 = new Vector3d(-Length / 2, -Length / 2, Length / 2);
+            _p3 = new Vector3d(-Length / 2, Length / 2, Length / 2);
+            a = _p2 - _p1;
+            b = _p3 - _p1;
+            temp = Vector3d.Cross(a, b);
+            temp.Normalize();
 
             GL.Color3(1.0f, 1.0f, 1.0f);
             GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
             GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
             GL.Vertex3(-Length / 2, Length / 2, Length / 2);
             GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
+            GL.Normal3(temp);
 
             //Rear Right
+
+            _p1 = new Vector3d(Length / 2, -Length / 2, -Length / 2);
+            _p2 = new Vector3d(Length / 2, -Length / 2, Length / 2);
+            _p3 = new Vector3d(Length / 2, Length / 2, Length / 2);
+            a = _p2 - _p1;
+            b = _p3 - _p1;
+            temp = Vector3d.Cross(a, b);
+            temp.Normalize();
 
             GL.Color3(0.0f, 1.0f, 0.0f);
             GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
             GL.Vertex3(Length / 2, -Length / 2, Length / 2);
             GL.Vertex3(Length / 2, Length / 2, Length / 2);
             GL.Vertex3(Length / 2, Length / 2, -Length / 2);
+            GL.Normal3(temp);
 
             //Rear bottom
+
+            _p1 = new Vector3d(-Length / 2, -Length / 2, -Length / 2);
+            _p2 = new Vector3d(-Length / 2, -Length / 2, Length / 2);
+            _p3 = new Vector3d(Length / 2, -Length / 2, Length / 2);
+            a = _p2 - _p1;
+            b = _p3 - _p1;
+            temp = Vector3d.Cross(a, b);
+            temp.Normalize();
+
 
             GL.Color3(0.0f, 1.0f, 1.0f);
             GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
             GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
             GL.Vertex3(Length / 2, -Length / 2, Length / 2);
             GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
-
+            GL.Normal3(temp);
             //Rear Up
 
             GL.Color3(0.0f, 0.0f, 1.0f);
@@ -101,23 +145,23 @@ namespace OpenTKTut.Shapes
 
         //public override void Draw()
         //{
-            
+
         //    GL.PushMatrix();
         //    base.Draw();
-            
+
 
         //    GL.Begin(BeginMode.Quads);
 
         //    //Front Face
-           
-        //    GL.Color3(1.0f, 0.0f, 0.0f);
+
+        //    //GL.Color3(1.0f, 0.0f, 0.0f);
         //    GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
         //    GL.Vertex3(Length / 2, -Length / 2, Length / 2);
         //    GL.Vertex3(Length / 2, Length / 2, Length / 2);
         //    GL.Vertex3(-Length / 2, Length / 2, Length / 2);
         //    //Rear Face
-            
-        //    GL.Color3(1.0f, 1.0f, 0.0f);
+
+        //    //GL.Color3(1.0f, 1.0f, 0.0f);
         //    GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
         //    GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
         //    GL.Vertex3(Length / 2, Length / 2, -Length / 2);
@@ -125,7 +169,7 @@ namespace OpenTKTut.Shapes
 
         //    //Rear Left
 
-        //    GL.Color3(1.0f, 1.0f, 1.0f);
+        //    //GL.Color3(1.0f, 1.0f, 1.0f);
         //    GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
         //    GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
         //    GL.Vertex3(-Length / 2, Length / 2, Length / 2);
@@ -133,7 +177,7 @@ namespace OpenTKTut.Shapes
 
         //    //Rear Right
 
-        //    GL.Color3(0.0f, 1.0f, 0.0f);
+        //    //GL.Color3(0.0f, 1.0f, 0.0f);
         //    GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
         //    GL.Vertex3(Length / 2, -Length / 2, Length / 2);
         //    GL.Vertex3(Length / 2, Length / 2, Length / 2);
@@ -141,7 +185,7 @@ namespace OpenTKTut.Shapes
 
         //    //Rear bottom
 
-        //    GL.Color3(0.0f, 1.0f, 1.0f);
+        //    //GL.Color3(0.0f, 1.0f, 1.0f);
         //    GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
         //    GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
         //    GL.Vertex3(Length / 2, -Length / 2, Length / 2);
@@ -149,7 +193,7 @@ namespace OpenTKTut.Shapes
 
         //    //Rear Up
 
-        //    GL.Color3(0.0f, 0.0f, 1.0f);
+        //    //GL.Color3(0.0f, 0.0f, 1.0f);
         //    GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
         //    GL.Vertex3(-Length / 2, Length / 2, Length / 2);
         //    GL.Vertex3(Length / 2, Length / 2, Length / 2);

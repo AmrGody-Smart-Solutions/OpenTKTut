@@ -35,27 +35,41 @@ namespace OpenTKTut.Shapes
     class OGLShape
     {
         public bool EnableAutoRotate { get; set; }
+        public bool EnableAutoRotate_at_other_place { get; set; }
+
         public Vector3 Center { get; set; }
-        
+        public Vector3 Center_rotate { get; set; }
+
         public MeshElement[] MeshPolygons { get => meshPolygons; set => meshPolygons = value; }
 
         protected float _rotateAngle;
+        protected float _rotateAngle_other_place;
+
         private MeshElement[] meshPolygons;
 
         public virtual void Draw()
         {
             GL.PushMatrix();
-            GL.Translate(Center.X, Center.Y, -Center.Z);
-            if (EnableAutoRotate)
+             GL.Color3(1.0f, 0.0f, 0.0f    );
+            if (EnableAutoRotate_at_other_place)
             {
-                if (EnableAutoRotate)
-                {
+                GL.Translate(Center_rotate.X, Center_rotate.Y, -Center_rotate.Z);
+                GL.Rotate(90, Vector3.UnitX);
+                GL.Rotate(_rotateAngle_other_place, Vector3.UnitY);
+                GL.Translate(-Center_rotate.X, -Center_rotate.Y, Center_rotate.Z);
+                _rotateAngle_other_place = _rotateAngle_other_place < 360 ? _rotateAngle_other_place + 1 : _rotateAngle_other_place - 360;
+            }
+            GL.Translate(Center.X, Center.Y, -Center.Z);
 
-                    GL.Rotate(_rotateAngle, Vector3.UnitX);
+            if (EnableAutoRotate)
+                {
+                GL.Color3(1.0f, 0.0f, 0.0f);
+
+                GL.Rotate(_rotateAngle, Vector3.UnitX);
                     GL.Rotate(_rotateAngle, Vector3.UnitZ);
                     _rotateAngle = _rotateAngle < 360 ? _rotateAngle + 1 : _rotateAngle - 360;
                 }
-            }
+            
             ShapeDrawing();
             GL.PopMatrix();
         }

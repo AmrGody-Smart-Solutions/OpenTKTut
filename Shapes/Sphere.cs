@@ -40,8 +40,15 @@ namespace OpenTKTut.Shapes
             Radius = radius;
             EnableAutoRotate = AutoRotate;
         }
+        public Sphere(Vector3 center, double radius, Vector3 center_r, bool AutoRotate = false, bool AutoRotate_c = false)
+        {
+            Center = center;
+            Radius = radius;
+            EnableAutoRotate = AutoRotate;
+            Center_rotate = center_r;
+            EnableAutoRotate_at_other_place = AutoRotate_c;
+        }
 
-        
         public double Radius { get; set; }
        
         protected override void ShapeDrawing()
