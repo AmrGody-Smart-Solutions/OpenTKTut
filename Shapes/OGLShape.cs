@@ -58,9 +58,15 @@ namespace OpenTKTut.Shapes
                 //GL.Rotate(90, Vector3.UnitX);
                 //rotate axis to Y
                 GL.Rotate(angle_rotate_far_center.Y  , Vector3.UnitX);
-                GL.Rotate(angle_rotate_far_center.Z, Vector3.UnitZ); 
+                GL.Rotate(angle_rotate_far_center.Z, Vector3.UnitZ);
+                GL.Rotate(angle_rotate_far_center.Y, Vector3.UnitY);
+
                 //rotate object around axis 
                 GL.Rotate(_rotateAngle_other_place , Vector3.UnitY);
+
+                GL.Rotate(-angle_rotate_far_center.Y, Vector3.UnitY);
+                GL.Rotate(-angle_rotate_far_center.Z, Vector3.UnitZ);
+                GL.Rotate(-angle_rotate_far_center.Y, Vector3.UnitX);
 
                 GL.Translate(-Center_rotate.X, -Center_rotate.Y, Center_rotate.Z);
                 _rotateAngle_other_place = _rotateAngle_other_place < 360 ? _rotateAngle_other_place + 1 : _rotateAngle_other_place - 360;
@@ -69,8 +75,6 @@ namespace OpenTKTut.Shapes
 
             if (EnableAutoRotate)
                 {
-                GL.Color3(1.0f, 0.0f, 0.0f);
-
                 GL.Rotate(_rotateAngle, Vector3.UnitX);
                     GL.Rotate(_rotateAngle, Vector3.UnitZ);
                     _rotateAngle = _rotateAngle < 360 ? _rotateAngle + 1 : _rotateAngle - 360;
