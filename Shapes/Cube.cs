@@ -132,13 +132,19 @@ namespace OpenTKTut.Shapes
             GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
             GL.Normal3(temp);
             //Rear Up
-
+            _p1 = new Vector3d(-Length / 2, Length / 2, -Length / 2);
+            _p2 = new Vector3d(-Length / 2, Length / 2,  Length / 2);
+            _p3 = new Vector3d( Length / 2, Length / 2,  Length / 2);
+            a = _p2 - _p1;
+            b = _p3 - _p1;
+            temp = Vector3d.Cross(a, b);
+            temp.Normalize();
             GL.Color3(0.0f, 0.0f, 1.0f);
             GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
             GL.Vertex3(-Length / 2, Length / 2, Length / 2);
             GL.Vertex3(Length / 2, Length / 2, Length / 2);
             GL.Vertex3(Length / 2, Length / 2, -Length / 2);
-
+            GL.Normal3(temp);
 
             GL.End();
         }
