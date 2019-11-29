@@ -56,6 +56,7 @@ namespace OpenTKTut.Shapes
                     Vector3 normal = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_1, _2, _4);
                     //Vector3 normal = GetNormal(_1, _2, _4);
                     Vector3[] vertices = { _1, _2, _3, _4 };
+                    
                     res.Add(new MeshElement(4, normal, vertices));
 
                 }

@@ -39,7 +39,8 @@ namespace OpenTKTut.Shapes
 
         public Vector3 Center { get; set; }
         public Vector3 Center_rotate { get; set; }
-
+        public Vector3 angle_rotate_far_center { get; set; }
+        public float[ ] Color { get; set; }
         public MeshElement[] MeshPolygons { get => meshPolygons; set => meshPolygons = value; }
 
         protected float _rotateAngle;
@@ -50,12 +51,17 @@ namespace OpenTKTut.Shapes
         public virtual void Draw()
         {
             GL.PushMatrix();
-             GL.Color3(1.0f, 0.0f, 0.0f    );
+           // GL.Color3(Color[0],Color[1],Color[2]  );
             if (EnableAutoRotate_at_other_place)
             {
                 GL.Translate(Center_rotate.X, Center_rotate.Y, -Center_rotate.Z);
-                GL.Rotate(90, Vector3.UnitX);
-                GL.Rotate(_rotateAngle_other_place, Vector3.UnitY);
+                //GL.Rotate(90, Vector3.UnitX);
+                //rotate axis to Y
+                GL.Rotate(angle_rotate_far_center.Y  , Vector3.UnitX);
+                GL.Rotate(angle_rotate_far_center.Z, Vector3.UnitZ); 
+                //rotate object around axis 
+                GL.Rotate(_rotateAngle_other_place , Vector3.UnitY);
+
                 GL.Translate(-Center_rotate.X, -Center_rotate.Y, Center_rotate.Z);
                 _rotateAngle_other_place = _rotateAngle_other_place < 360 ? _rotateAngle_other_place + 1 : _rotateAngle_other_place - 360;
             }

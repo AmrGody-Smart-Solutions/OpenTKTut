@@ -36,9 +36,13 @@ namespace OpenTKTut.Shapes
     {
         public Sphere(Vector3 center, double radius,bool AutoRotate = false)
         {
+            Color = new float[3] { 0.5f, 0.5f, 0.5f };
+
             Center = center;
             Radius = radius;
             EnableAutoRotate = AutoRotate;
+            EnableAutoRotate_at_other_place = false;
+            angle_rotate_far_center = new Vector3(45, 45, 45);
         }
         public Sphere(Vector3 center, double radius, Vector3 center_r, bool AutoRotate = false, bool AutoRotate_c = false)
         {
@@ -47,8 +51,21 @@ namespace OpenTKTut.Shapes
             EnableAutoRotate = AutoRotate;
             Center_rotate = center_r;
             EnableAutoRotate_at_other_place = AutoRotate_c;
-        }
+            angle_rotate_far_center = new Vector3(45, 45, 45);
+            Color = new float[3] { .5f, 0.5f, 0.5f };
 
+        }
+        public Sphere(Vector3 center, double radius, Vector3 center_r, Vector3 center_r_rotate_angle, bool AutoRotate = false, bool AutoRotate_c = false)
+        {
+            Center = center;
+            Radius = radius;
+            EnableAutoRotate = AutoRotate;
+            Center_rotate = center_r;
+            EnableAutoRotate_at_other_place = AutoRotate_c;
+            angle_rotate_far_center = center_r_rotate_angle;
+            Color = new float[3] { 0.5f, 0.5f, 0.5f };
+
+        }
         public double Radius { get; set; }
        
         protected override void ShapeDrawing()
@@ -57,7 +74,7 @@ namespace OpenTKTut.Shapes
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons= MeshElement.Sphere(Radius);
             GL.Begin(BeginMode.Quads);
-            GL.Color3(new float[] { 1.0f, 1.0f, 0.0f });
+            GL.Color3(Color[0], Color[1], Color[2]);
             for(int i=0;i< MeshPolygons.Length;i++)
             {
                 GL.Normal3(MeshPolygons[i].Normal);
