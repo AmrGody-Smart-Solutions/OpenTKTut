@@ -26,6 +26,7 @@ using System;
 using System.Collections.Generic;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 using OpenTKTut.Shapes;
 namespace OpenTKTut
 {
@@ -85,6 +86,13 @@ namespace OpenTKTut
             for (int i = 0; i < _drawingList.Count; i++)
             {
                 _drawingList[i].Draw();
+            }
+
+            KeyboardState state = Keyboard.GetState();
+
+            if (state.IsKeyDown(Key.Escape))
+            {
+                _window.Exit();
             }
 
             _window.SwapBuffers();
