@@ -38,27 +38,18 @@ namespace OpenTKTut
             SceenEngine sceenEngine = new SceenEngine();
 
             // core
-            Sphere sp = new Sphere(new Vector3(0.0f, 0.0f, 50.0f), 2, true, CoreColor2)
-            {
-                IsAnchor = true
-            };
-
+            Sphere sp = new Sphere(new Vector3(0.0f, 0.0f, 50.0f), 2, true, CoreColor2);
             sceenEngine.AddShape(sp);
 
             Sphere sp2 = new Sphere(new Vector3(2.0f, 0.0f, 50.0f), 2, true, CoreColor2)
             {
-                IsAnchor = false,
-                RotateAround = sp.Center,
-                RotationVector = Vector3.UnitY,
-                speed = 1
+                RotateAround = sp.Center
             };
             sceenEngine.AddShape(sp2);
 
             sp2 = new Sphere(new Vector3(1.0f, 2.0f, 50.0f), 2, true, CoreColor1)
             {
-                IsAnchor = false,
                 RotateAround = sp.Center,
-                RotationVector = Vector3.UnitY,
                 speed = 1
             };
             sceenEngine.AddShape(sp2);

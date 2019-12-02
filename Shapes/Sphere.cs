@@ -39,8 +39,9 @@ namespace OpenTKTut.Shapes
         public Sphere(Vector3 center,
                       double radius,
                       bool AutoRotate,
-                      float[] color)
+                      float[] color) : base(center)
         {
+
             Center = center;
             Radius = radius;
             EnableAutoRotate = AutoRotate;
