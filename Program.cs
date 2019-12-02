@@ -24,46 +24,106 @@
 *
 *******************************************************************************H*/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenTK;
+using OpenTKTut.Shapes;
 namespace OpenTKTut
 {
     class Program
     {
+        static float[] CoreColor1 = { 0.6f, 0.0f, 0.8f };
+        static float[] CoreColor2 = { 0.4f, 0.0f, 0.0f };
+        static float[] ElectronsColor = { 0.0f, 0.0f, 0.8f };
         static void Main(string[] args)
         {
             SceenEngine sceenEngine = new SceenEngine();
 
+            // core
+            Sphere sp = new Sphere(new Vector3(0.0f, 0.0f, 50.0f), 2, true, CoreColor2)
+            {
+                IsAnchor = true
+            };
 
-
-
-            Shapes.Cube cube = new Shapes.Cube(new Vector3(0.0f, 20.0f, 80.0f), 10.0f, true);
-            sceenEngine.AddShape(cube);
-
-            cube = new Shapes.Cube(new Vector3(-10.0f, -7.0f, 35.0f), 5.0f, true);
-            sceenEngine.AddShape(cube);
-
-            cube = new Shapes.Cube(new Vector3(10.0f, -10.0f, 60.0f), 3.0f, true);
-            sceenEngine.AddShape(cube);
-
-            cube = new Shapes.Cube(new Vector3(10.0f, -10.0f, 40.0f), 3.0f, true);
-            sceenEngine.AddShape(cube);
-
-            Shapes.Sphere sp = new Shapes.Sphere(new Vector3( 0.0f,0.0f,50.0f), 5, true);
             sceenEngine.AddShape(sp);
 
-            sp = new Shapes.Sphere(new Vector3(-20.0f, 20.0f, 80.0f), 5, true);
-            sceenEngine.AddShape(sp);
+            Sphere sp2 = new Sphere(new Vector3(2.0f, 0.0f, 50.0f), 2, true, CoreColor2)
+            {
+                IsAnchor = false,
+                RotateAround = sp.Center,
+                RotationVector = Vector3.UnitY,
+                speed = 1
+            };
+            sceenEngine.AddShape(sp2);
 
-            sp = new Shapes.Sphere(new Vector3(5.0f, -5.0f, 30.0f), 3, false);
-            sceenEngine.AddShape(sp);
+            sp2 = new Sphere(new Vector3(1.0f, 2.0f, 50.0f), 2, true, CoreColor1)
+            {
+                IsAnchor = false,
+                RotateAround = sp.Center,
+                RotationVector = Vector3.UnitY,
+                speed = 1
+            };
+            sceenEngine.AddShape(sp2);
+
+
+
+            //electrons
+            sp2 = new Sphere(new Vector3(10.0f, 0.0f, 50.0f), 1, true, ElectronsColor)
+            {
+                IsAnchor = false,
+                RotateAround = sp.Center,
+                RotationVector = Vector3.UnitY,
+                speed = 1
+            };
+            sceenEngine.AddShape(sp2);
+
+            sp2 = new Sphere(new Vector3(14.0f, 0.0f, 50.0f), 1, true, ElectronsColor)
+            {
+                IsAnchor = false,
+                RotateAround = sp.Center,
+                RotationVector = new Vector3(0.0f, 1.0f, 1.0f),
+                speed = 3
+            };
+            sceenEngine.AddShape(sp2);
+
+            sp2 = new Sphere(new Vector3(0.0f, 15.0f, 50.0f), 1, true, ElectronsColor)
+            {
+                IsAnchor = false,
+                RotateAround = sp.Center,
+                RotationVector = new Vector3(1.0f, 0.0f, 0.0f),
+                speed = 5
+            };
+            sceenEngine.AddShape(sp2);
+
+
+            sp2 = new Sphere(new Vector3(-14.0f, 0.0f, 50.0f), 1, true, ElectronsColor)
+            {
+                IsAnchor = false,
+                RotateAround = sp.Center,
+                RotationVector = new Vector3(0.0f, -1.0f, 0.0f),
+                speed = 2
+            };
+            sceenEngine.AddShape(sp2);
+
+            sp2 = new Sphere(new Vector3(19.0f, 0.0f, 50.0f), 1, true, ElectronsColor)
+            {
+                IsAnchor = false,
+                RotateAround = sp.Center,
+                RotationVector = new Vector3(0.5f, 0.0f, -1.0f),
+                speed = 6
+            };
+            sceenEngine.AddShape(sp2);
+
+            sp2 = new Sphere(new Vector3(-16.0f, 0.0f, 50.0f), 1, true, ElectronsColor)
+            {
+                IsAnchor = false,
+                RotateAround = sp.Center,
+                RotationVector = new Vector3(0.5f, 0.0f, -1.0f),
+                speed = 6
+            };
+            sceenEngine.AddShape(sp2);
+
 
             sceenEngine.Start();
-           //sceenEngine.AddShape()
+            //sceenEngine.AddShape()
         }
     }
 }

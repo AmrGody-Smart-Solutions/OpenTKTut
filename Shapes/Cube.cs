@@ -22,11 +22,6 @@
 * 1       1       24OCT19 AG      first working version
 *
 *******************************************************************************H*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 namespace OpenTKTut.Shapes
@@ -40,13 +35,12 @@ namespace OpenTKTut.Shapes
             EnableAutoRotate = enableRotation;
         }
 
-       
         public double Length { get; set; }
 
         protected override void ShapeDrawing()
         {
             base.ShapeDrawing();
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
 
             //Front Face
 

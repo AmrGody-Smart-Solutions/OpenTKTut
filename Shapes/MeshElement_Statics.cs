@@ -33,14 +33,14 @@ namespace OpenTKTut.Shapes
 {
     partial class MeshElement
     {
-        private static  double _converter_factor = Math.PI / 180;
+        private static double _converter_factor = Math.PI / 180;
         public static MeshElement[] Sphere(double radius)
         {
             List<MeshElement> res = new List<MeshElement>();
-            
+
             int dlta = 10;
             double delta = Convert.ToDouble(dlta) * _converter_factor;
-            for (int theta = 0;theta<=180-dlta;theta += dlta )
+            for (int theta = 0; theta <= 180 - dlta; theta += dlta)
             {
                 for (int phi = 0; phi <= 360 - dlta; phi += dlta)
                 {
@@ -74,14 +74,14 @@ namespace OpenTKTut.Shapes
             // |a
             // 7
             // 2
-            var _p1 = new  Vector3d(p1.X, p1.Y, p1.Z);
+            var _p1 = new Vector3d(p1.X, p1.Y, p1.Z);
             var _p2 = new Vector3d(p2.X, p2.Y, p2.Z);
             var _p3 = new Vector3d(p3.X, p3.Y, p3.Z);
             Vector3d a = _p2 - _p1;
             Vector3d b = _p3 - _p1;
             var temp = Vector3d.Cross(a, b);
             temp.Normalize();
-            res.X = Convert.ToSingle( temp.X);
+            res.X = Convert.ToSingle(temp.X);
             res.Y = Convert.ToSingle(temp.Y);
             res.Z = Convert.ToSingle(temp.Z);
 

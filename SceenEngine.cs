@@ -40,8 +40,6 @@ namespace OpenTKTut
             _window = new GameWindow(800, 600);
             InitializeObjects();
             SetEvents();
-            
-
         }
         public void Start()
         {

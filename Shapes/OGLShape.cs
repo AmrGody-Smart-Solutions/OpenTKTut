@@ -23,11 +23,7 @@
 * 1       1       24OCT19 AG      first working version
 *
 *******************************************************************************H*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 namespace OpenTKTut.Shapes
@@ -35,8 +31,12 @@ namespace OpenTKTut.Shapes
     class OGLShape
     {
         public bool EnableAutoRotate { get; set; }
+        public Vector3 RotateAround { get => rotateAround; set => rotateAround = value; }
+        private Vector3 rotateAround = Vector3.UnitY; //something impossible to be set
+        public bool IsAnchor = true;
+        public Vector3 RotationVector = Vector3.UnitZ;
         public Vector3 Center { get; set; }
-        
+        public int speed = 1;
         public MeshElement[] MeshPolygons { get => meshPolygons; set => meshPolygons = value; }
 
         protected float _rotateAngle;
@@ -46,23 +46,44 @@ namespace OpenTKTut.Shapes
         {
             GL.PushMatrix();
             GL.Translate(Center.X, Center.Y, -Center.Z);
+
             if (EnableAutoRotate)
             {
-                if (EnableAutoRotate)
+                if (IsAnchor)
                 {
+                    GL.Rotate(_rotateAngle, rotateAround);
+                    _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
 
-                    GL.Rotate(_rotateAngle, Vector3.UnitX);
-                    GL.Rotate(_rotateAngle, Vector3.UnitZ);
-                    _rotateAngle = _rotateAngle < 360 ? _rotateAngle + 1 : _rotateAngle - 360;
                 }
+                else
+                {
+                    //1- Translate to the origin
+                    GL.Translate(-Center.X, -Center.Y, Center.Z);
+                    //2- Translate to the new center
+                    GL.Translate(RotateAround.X,
+                                 RotateAround.Y,
+                                 -RotateAround.Z);
+                    //TODO: make rotation axis optional but for now make it rotate around the Z
+                    GL.Rotate(_rotateAngle, RotationVector);
+                    _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
+                    //2- Translate to the new center
+                    GL.Translate(-RotateAround.X,
+                                 -RotateAround.Y,
+                                 RotateAround.Z);
+                    //1-reverse translation
+                    GL.Translate(Center.X, Center.Y, -Center.Z);
+                }
+
+                // _rotateAngle = _rotateAngle < 360 ? _rotateAngle + 1 : _rotateAngle - 360;
             }
+
             ShapeDrawing();
             GL.PopMatrix();
         }
 
         protected virtual void ShapeDrawing()
         {
-            //Add any common drawing for all shapes in this part
+            // Add any common drawing for all shapes in this part
         }
 
 
