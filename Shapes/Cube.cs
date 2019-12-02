@@ -40,7 +40,7 @@ namespace OpenTKTut.Shapes
         protected override void ShapeDrawing()
         {
             base.ShapeDrawing();
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             //Front Face
 
