@@ -63,9 +63,10 @@ namespace OpenTKTut.Shapes
                     GL.Translate(RotateAround.X,
                                  RotateAround.Y,
                                  -RotateAround.Z);
-                    //TODO: make rotation axis optional but for now make it rotate around the Z
+                    //rotate in the new axes 
                     GL.Rotate(_rotateAngle, RotationVector);
                     _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
+                    /////////////// reverse //////////////////
                     //2- Translate to the new center
                     GL.Translate(-RotateAround.X,
                                  -RotateAround.Y,
