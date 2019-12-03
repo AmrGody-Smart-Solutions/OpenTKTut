@@ -60,7 +60,7 @@ namespace OpenTKTut.Shapes
                 GL.Translate(Center_rotate.X, Center_rotate.Y, -Center_rotate.Z);
                 //GL.Rotate(90, Vector3.UnitX);
                 //rotate axis to Y
-                GL.Rotate(angle_rotate_far_center.Y  , Vector3.UnitX);
+                GL.Rotate(angle_rotate_far_center.X  , Vector3.UnitX);
                 GL.Rotate(angle_rotate_far_center.Z, Vector3.UnitZ);
                 GL.Rotate(angle_rotate_far_center.Y, Vector3.UnitY);
 
@@ -69,7 +69,7 @@ namespace OpenTKTut.Shapes
 
                 GL.Rotate(-angle_rotate_far_center.Y, Vector3.UnitY);
                 GL.Rotate(-angle_rotate_far_center.Z, Vector3.UnitZ);
-                GL.Rotate(-angle_rotate_far_center.Y, Vector3.UnitX);
+                GL.Rotate(-angle_rotate_far_center.X, Vector3.UnitX);
 
                 GL.Translate(-Center_rotate.X, -Center_rotate.Y, Center_rotate.Z);
                 _rotateAngle_other_place  = _rotateAngle_other_place  < 360 ? _rotateAngle_other_place + 1*speed : _rotateAngle_other_place - 360;
@@ -78,8 +78,9 @@ namespace OpenTKTut.Shapes
 
             if (EnableAutoRotate)
                 {
-                GL.Rotate(_rotateAngle, Vector3.UnitX);
-                    GL.Rotate(_rotateAngle, Vector3.UnitZ);
+           //     GL.Translate(Center.X, Center.Y, Center.Z);
+                    GL.Rotate(_rotateAngle, Vector3.UnitX);
+                    GL.Rotate(_rotateAngle, Vector3.UnitY);
                     _rotateAngle = _rotateAngle < 360 ? _rotateAngle + 1 : _rotateAngle - 360;
                 }
             
