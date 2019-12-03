@@ -3,7 +3,8 @@
 - view color material
 -- added abilty to change spheres' color  
 -  added abilty to change spheres' center of rotation
--   added abilty to change   angle of roation for axis specified by remote center
+-  added abilty to change   angle of roation for axis specified by remote center
+-  added abilty to change   velocity  of roation around remote center
 
 **here is an example**
 
