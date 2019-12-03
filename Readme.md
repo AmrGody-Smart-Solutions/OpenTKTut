@@ -1,6 +1,3 @@
-
-# Solar System 
-forked from https://github.com/AmrGody-Smart-Solutions/OpenTKTut
 ## changes :
 - add normal vectors for cubes 
 - view color material
@@ -10,7 +7,7 @@ forked from https://github.com/AmrGody-Smart-Solutions/OpenTKTut
 
 **here is an example**
 
- ![sample2](C:\Users\modern\Desktop\OpenTKTut\Doc\sample3.gif)
+ ![sample2](Doc/sample3.gif)
 
 
 
