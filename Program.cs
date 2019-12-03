@@ -73,7 +73,13 @@ namespace OpenTKTut
             sp.Color[0] = 1.0f;
             sp.Color[1] = 1.0f;
             sp.Color[2] = 1.0f;
-            
+
+            sceenEngine.AddShape(sp);
+            sp = new Shapes.Sphere(new Vector3(10.0f, 20.0f, 90.0f), 1, new Vector3(0.0f, 20.0f, 80.0f), new Vector3(-45, -45, 0), true, true);
+            sp.Color[0] = 1.0f;
+            sp.Color[1] = 1.0f;
+            sp.Color[2] = 1.0f;
+            sp.speed = 5;
             sceenEngine.AddShape(sp);
             sp = new Shapes.Sphere(new Vector3(0.0f, 20.0f, 50.0f), 1, new Vector3(0.0f, 20.0f, 90.0f), new Vector3(00, 00, 90), true, true);
             sp.Color[0] = 0.0f;
@@ -81,6 +87,7 @@ namespace OpenTKTut
             sp.Color[2] = 0.5f;
             sp.speed =3.0f;
             sceenEngine.AddShape(sp);
+          
             sceenEngine.Start();
             
             //sceenEngine.AddShape()
