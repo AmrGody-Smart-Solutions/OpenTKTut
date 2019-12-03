@@ -41,6 +41,9 @@ namespace OpenTKTut.Shapes
         public Vector3 Center_rotate { get; set; }
         public Vector3 angle_rotate_far_center { get; set; }
         public float[ ] Color { get; set; }
+
+
+        public float  speed ;
         public MeshElement[] MeshPolygons { get => meshPolygons; set => meshPolygons = value; }
 
         protected float _rotateAngle;
@@ -69,7 +72,7 @@ namespace OpenTKTut.Shapes
                 GL.Rotate(-angle_rotate_far_center.Y, Vector3.UnitX);
 
                 GL.Translate(-Center_rotate.X, -Center_rotate.Y, Center_rotate.Z);
-                _rotateAngle_other_place = _rotateAngle_other_place < 360 ? _rotateAngle_other_place + 1 : _rotateAngle_other_place - 360;
+                _rotateAngle_other_place  = _rotateAngle_other_place  < 360 ? _rotateAngle_other_place + 1*speed : _rotateAngle_other_place - 360;
             }
             GL.Translate(Center.X, Center.Y, -Center.Z);
 

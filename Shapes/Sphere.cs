@@ -43,6 +43,7 @@ namespace OpenTKTut.Shapes
             EnableAutoRotate = AutoRotate;
             EnableAutoRotate_at_other_place = false;
             angle_rotate_far_center = new Vector3(45, 45, 45);
+            speed = 1.0f;
         }
         public Sphere(Vector3 center, double radius, Vector3 center_r, bool AutoRotate = false, bool AutoRotate_c = false)
         {
@@ -53,7 +54,7 @@ namespace OpenTKTut.Shapes
             EnableAutoRotate_at_other_place = AutoRotate_c;
             angle_rotate_far_center = new Vector3(45, 45, 45);
             Color = new float[3] { .5f, 0.5f, 0.5f };
-
+            speed = 1.0f;
         }
         public Sphere(Vector3 center, double radius, Vector3 center_r, Vector3 center_r_rotate_angle, bool AutoRotate = false, bool AutoRotate_c = false)
         {
@@ -64,6 +65,7 @@ namespace OpenTKTut.Shapes
             EnableAutoRotate_at_other_place = AutoRotate_c;
             angle_rotate_far_center = center_r_rotate_angle;
             Color = new float[3] { 0.5f, 0.5f, 0.5f };
+            speed = 1.0f;
 
         }
         public double Radius { get; set; }
