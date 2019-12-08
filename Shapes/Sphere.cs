@@ -34,11 +34,13 @@ namespace OpenTKTut.Shapes
 {
     class Sphere : OGLShape
     {
-        public Sphere(Vector3 center, double radius,bool AutoRotate = false)
+        public Vector3 Color {get; set;}
+        public Sphere(Vector3 center, double radius,bool AutoRotate = false,Vector3 color = default(Vector3))
         {
             Center = center;
             Radius = radius;
             EnableAutoRotate = AutoRotate;
+            Color = color;
         }
 
         
@@ -50,7 +52,7 @@ namespace OpenTKTut.Shapes
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons= MeshElement.Sphere(Radius);
             GL.Begin(BeginMode.Quads);
-            GL.Color3(new float[] { 0.0f, 0.0f, 0.8f });
+            GL.Color3(Color);
             for(int i=0;i< MeshPolygons.Length;i++)
             {
                 GL.Normal3(MeshPolygons[i].Normal);
