@@ -32,7 +32,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 namespace OpenTKTut.Shapes
 {
-    class OGLShape
+    public class OGLShape
     {
         public bool EnableAutoRotate { get; set; }
         public bool EnableMasterRotate { get; set; }
@@ -73,13 +73,18 @@ namespace OpenTKTut.Shapes
                 GL.Translate(rotateMaster.Center.X, rotateMaster.Center.Y, -rotateMaster.Center.Z);
                 
                 float angle = 0;
-                if (rotateMaster == this){
+                if (rotateMaster == this)
+                {
                     angle = shape._rotateAngle;
                     shape._rotateAngle = shape._rotateAngle < 360 ? shape._rotateAngle + shape.rotation_speed : shape._rotateAngle - 360;
                 }
-                else{
+                else
+                {
                     angle = shape._rotateAngle_master;
-                    shape._rotateAngle_master = shape._rotateAngle_master < 360 ? shape._rotateAngle_master + shape.rotation_speed_master : shape._rotateAngle_master - 360;
+                    if (shape == this)
+                    {
+                        shape._rotateAngle_master = shape._rotateAngle_master < 360 ? shape._rotateAngle_master + shape.rotation_speed_master : shape._rotateAngle_master - 360;
+                    }
                 }
 
                 GL.Rotate(angle, axis);
@@ -102,11 +107,15 @@ namespace OpenTKTut.Shapes
 
             GL.Translate(Center.X, Center.Y, -Center.Z);
             ShapeDrawing();
+            // get model_matrix
+            // multiply center by it 
+            // save point 
+            // darw last 100 points
             GL.PopMatrix();
         }
         public virtual void Rotate(OGLShape rotateMaster = null,float distance =0, float speed = 1, Vector3 axis = default(Vector3)){
             if (axis == default(Vector3)){
-                axis = new Vector3(1f, 1f, 1f);
+                axis = new Vector3(1f, 1f, 0f);
             }
             
             if (rotateMaster == null | rotateMaster == this)
