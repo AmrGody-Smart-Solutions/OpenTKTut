@@ -31,7 +31,7 @@ using OpenTK;
 
 namespace OpenTKTut.Shapes
 {
-    partial class MeshElement
+    public partial class MeshElement
     {
         public MeshElement(int order, Vector3 normal, Vector3[] vertices)
         {
