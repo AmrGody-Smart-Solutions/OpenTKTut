@@ -41,6 +41,8 @@ namespace OpenTKTut.Shapes
             Radius = radius;
             EnableAutoRotate = AutoRotate;
             Color = color;
+            rotation_speed = 1;
+            rotationAxis = new Vector3(1f, 1f, 0f);
         }
 
         
@@ -51,13 +53,14 @@ namespace OpenTKTut.Shapes
             base.ShapeDrawing();
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons= MeshElement.Sphere(Radius);
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color);
             for(int i=0;i< MeshPolygons.Length;i++)
             {
-                GL.Normal3(MeshPolygons[i].Normal);
-                for(int j=0;j< MeshPolygons[i].Vertices.Length;j++)
+                for (int j=0;j< MeshPolygons[i].Vertices.Length;j++)
                 {
+                    // set point normal and postion
+                    GL.Normal3(MeshPolygons[i].Vertices[j].Normalized());
                     GL.Vertex3(MeshPolygons[i].Vertices[j]);
                 }
                
