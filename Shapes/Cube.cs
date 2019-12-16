@@ -33,135 +33,39 @@ namespace OpenTKTut.Shapes
 {
     class Cube : OGLShape
     {
-        public Cube(Vector3 center, double length,bool enableRotation = false)
+        public Cube(Vector3 center, float length,bool enableRotation = false)
         {
             Center = center;
             Length = length;
             EnableAutoRotate = enableRotation;
+            rotation_speed = 1;
+            rotationAxis = new Vector3(1f, 1f, 0f);
         }
 
        
-        public double Length { get; set; }
+        public float Length { get; set; }
 
         protected override void ShapeDrawing()
         {
             base.ShapeDrawing();
-            GL.Begin(BeginMode.Quads);
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+            MeshPolygons = MeshElement.Cube(Length);
+            
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(System.Drawing.Color.Red);
+            for (int i = 0; i < MeshPolygons.Length; i++)
+            {
 
-            //Front Face
+                for (int j = 0; j < MeshPolygons[i].Vertices.Length; j++)
+                {
+                    GL.Normal3(MeshPolygons[i].Normal);
+                    GL.Vertex3(MeshPolygons[i].Vertices[j]);
+                }
 
-            GL.Color3(1.0f, 0.0f, 0.0f);
-            GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
-            GL.Vertex3(Length / 2, -Length / 2, Length / 2);
-            GL.Vertex3(Length / 2, Length / 2, Length / 2);
-            GL.Vertex3(-Length / 2, Length / 2, Length / 2);
-            //Rear Face
-
-            GL.Color3(1.0f, 1.0f, 0.0f);
-            GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
-            GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
-            GL.Vertex3(Length / 2, Length / 2, -Length / 2);
-            GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
-
-            //Rear Left
-
-            GL.Color3(1.0f, 1.0f, 1.0f);
-            GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
-            GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
-            GL.Vertex3(-Length / 2, Length / 2, Length / 2);
-            GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
-
-            //Rear Right
-
-            GL.Color3(0.0f, 1.0f, 0.0f);
-            GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
-            GL.Vertex3(Length / 2, -Length / 2, Length / 2);
-            GL.Vertex3(Length / 2, Length / 2, Length / 2);
-            GL.Vertex3(Length / 2, Length / 2, -Length / 2);
-
-            //Rear bottom
-
-            GL.Color3(0.0f, 1.0f, 1.0f);
-            GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
-            GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
-            GL.Vertex3(Length / 2, -Length / 2, Length / 2);
-            GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
-
-            //Rear Up
-
-            GL.Color3(0.0f, 0.0f, 1.0f);
-            GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
-            GL.Vertex3(-Length / 2, Length / 2, Length / 2);
-            GL.Vertex3(Length / 2, Length / 2, Length / 2);
-            GL.Vertex3(Length / 2, Length / 2, -Length / 2);
-
-
+            }
             GL.End();
+
         }
-
-        //public override void Draw()
-        //{
-            
-        //    GL.PushMatrix();
-        //    base.Draw();
-            
-
-        //    GL.Begin(BeginMode.Quads);
-
-        //    //Front Face
-           
-        //    GL.Color3(1.0f, 0.0f, 0.0f);
-        //    GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
-        //    GL.Vertex3(Length / 2, -Length / 2, Length / 2);
-        //    GL.Vertex3(Length / 2, Length / 2, Length / 2);
-        //    GL.Vertex3(-Length / 2, Length / 2, Length / 2);
-        //    //Rear Face
-            
-        //    GL.Color3(1.0f, 1.0f, 0.0f);
-        //    GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
-        //    GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
-        //    GL.Vertex3(Length / 2, Length / 2, -Length / 2);
-        //    GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
-
-        //    //Rear Left
-
-        //    GL.Color3(1.0f, 1.0f, 1.0f);
-        //    GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
-        //    GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
-        //    GL.Vertex3(-Length / 2, Length / 2, Length / 2);
-        //    GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
-
-        //    //Rear Right
-
-        //    GL.Color3(0.0f, 1.0f, 0.0f);
-        //    GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
-        //    GL.Vertex3(Length / 2, -Length / 2, Length / 2);
-        //    GL.Vertex3(Length / 2, Length / 2, Length / 2);
-        //    GL.Vertex3(Length / 2, Length / 2, -Length / 2);
-
-        //    //Rear bottom
-
-        //    GL.Color3(0.0f, 1.0f, 1.0f);
-        //    GL.Vertex3(-Length / 2, -Length / 2, -Length / 2);
-        //    GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
-        //    GL.Vertex3(Length / 2, -Length / 2, Length / 2);
-        //    GL.Vertex3(Length / 2, -Length / 2, -Length / 2);
-
-        //    //Rear Up
-
-        //    GL.Color3(0.0f, 0.0f, 1.0f);
-        //    GL.Vertex3(-Length / 2, Length / 2, -Length / 2);
-        //    GL.Vertex3(-Length / 2, Length / 2, Length / 2);
-        //    GL.Vertex3(Length / 2, Length / 2, Length / 2);
-        //    GL.Vertex3(Length / 2, Length / 2, -Length / 2);
-
-
-        //    GL.End();
-
-
-
-        //    GL.PopMatrix();
-        //}
 
     }
 }

@@ -66,6 +66,55 @@ namespace OpenTKTut.Shapes
             return res.ToArray();
         }
 
+        public static MeshElement[] Cube(float len)
+        {
+            // 1 ===== 4
+            // |       |
+            // 2 ===== 3
+            List<MeshElement> res = new List<MeshElement>();
+
+           //front 
+            Vector3 _1 =new Vector3(-len / 2, len / 2, len / 2);
+            Vector3 _2 =new Vector3(-len / 2, -len / 2, len / 2);
+            Vector3 _3 =new Vector3(len / 2, -len / 2, len / 2);
+            Vector3 _4 =new Vector3(len / 2, len / 2, len / 2);
+            //rear
+            Vector3 _5 =new Vector3(-len / 2, len / 2, -len / 2);
+            Vector3 _6 =new Vector3(-len / 2, -len / 2, -len / 2);
+            Vector3 _7 =new Vector3(len / 2, -len / 2, -len / 2);
+            Vector3 _8 =new Vector3(len / 2, len / 2, -len / 2);
+            
+            Vector3[] vertices_front = { _1, _2, _3, _4 };
+            Vector3 normal_front = GetNormal(_1, _2, _4);
+
+            res.Add(new MeshElement(4,normal_front, vertices_front ));
+
+            Vector3[] vertices_rear = { _5, _6, _7, _8 };
+            Vector3 normal_rear = GetNormal(_8, _6, _5);
+            res.Add(new MeshElement(4, normal_rear, vertices_rear));
+
+            Vector3[] vertices_up = { _1, _2, _6, _5 };
+            Vector3 normal_up = GetNormal(_5, _6, _1);
+            res.Add(new MeshElement(4, normal_up, vertices_up));
+
+
+            Vector3[] vertices_down = { _3, _4, _8, _7 };
+            Vector3 normal_down = GetNormal(_3, _7, _4);
+            res.Add(new MeshElement(4, normal_down, vertices_down));
+
+
+            Vector3[] vertices_right = { _3, _2, _6, _7 };
+            Vector3 normal_right = GetNormal(_3, _2, _6);
+            res.Add(new MeshElement(4, normal_right, vertices_right));
+
+
+            Vector3[] vertices_left = { _4, _1, _5, _8 };
+            Vector3 normal_left = GetNormal(_8, _5, _4);
+            res.Add(new MeshElement(4, normal_left, vertices_left));
+
+
+            return res.ToArray();
+        }
         private static Vector3 GetNormal(Vector3 p1, Vector3 p2, Vector3 p3)
         {
             Vector3 res = new Vector3();
