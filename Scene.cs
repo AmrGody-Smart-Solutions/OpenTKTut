@@ -38,7 +38,9 @@ public class Scene
         sun.Rotate();  // rotating around itself
         sceenEngine.AddShape(sun);
 
-
+        Cube cube = new Cube(new Vector3(0f, 0f, 10f), .25f* sun_size);
+        cube.Rotate(sun, 1.5f * sun_size);
+        sceenEngine.AddShape(cube);
     }
     public void solar_system_3d(SceenEngine sceenEngine)
     {

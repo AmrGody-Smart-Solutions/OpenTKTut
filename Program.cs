@@ -45,8 +45,8 @@ namespace OpenTKTut
             //s.solar_moon_earth_sun(sceenEngine);
             //s.solar_system_3d(sceenEngine);
             //s.solar_system_top_view(sceenEngine);
-            //s.big_sun(sceenEngine);
-            s.original_scene(sceenEngine);
+            s.big_sun(sceenEngine);
+            //s.original_scene(sceenEngine);
 
 
             sceenEngine.Start();
