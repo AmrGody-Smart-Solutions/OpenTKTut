@@ -71,9 +71,9 @@ namespace OpenTKTut
             GL.Viewport(0, 0, _window.Width, _window.Height);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            //GL.Ortho(0, 100, 0, 100, -1, 1);
-            //GL.Frustum(0, 100, 0, 100, 1, 100);
-            Matrix4 prespective = Matrix4.CreatePerspectiveFieldOfView(45.0f * 3.14f / 180.0f, _window.Width / _window.Height, 1.0f, 100.0f);
+            GL.Ortho(0, 100, 0, 100, -1, 1);
+            GL.Frustum(0, 100, 0, 100, 70, 200);
+            Matrix4 prespective = Matrix4.CreatePerspectiveFieldOfView(45.0f * 3.14f / 180.0f, (_window.Width+1) / (_window.Height+1 ),0.5f, 400.0f);
            
            // Matrix4 prespective = Matrix4.CreatePerspectiveOffCenter(-150.0f, 150.0f, -150.0f, 150.0f, 1.0f, 100.0f);
             GL.LoadMatrix(ref prespective);

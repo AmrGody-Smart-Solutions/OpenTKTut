@@ -38,7 +38,7 @@ namespace OpenTKTut.Shapes
             Center = center;
             Length = length;
             EnableAutoRotate = enableRotation;
-            EnableAutoRotate_at_other_place = false;
+            EnableAutoRotate_at_other_place_sun = false;
         }
 
 

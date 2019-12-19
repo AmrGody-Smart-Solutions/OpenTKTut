@@ -10,7 +10,7 @@
   <Class Name="OpenTKTut.Shapes.OGLShape">
     <Position X="6.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAABAgBAAAACAAAAQADAAQAAQAAAgEAIAAA=</HashCode>
+      <HashCode>AAAIAAAIAAABAgBAAIAAAAAAAAJAABAAQBABgAAIEEQ=</HashCode>
       <FileName>Shapes\OGLShape.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
