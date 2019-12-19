@@ -52,7 +52,7 @@ namespace OpenTKTut.Shapes
             base.ShapeDrawing();
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons= MeshElement.Sphere(Radius);
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
             GL.Color3(new float[] { 1.0f, 1.0f, 1.0f });
             for(int i=0;i< MeshPolygons.Length;i++)
             {
