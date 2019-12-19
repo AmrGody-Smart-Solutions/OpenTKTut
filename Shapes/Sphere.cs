@@ -60,9 +60,10 @@ namespace OpenTKTut.Shapes
             GL.Color3(Color);
             for (int i = 0; i < MeshPolygons.Length; i++)
             {
-                GL.Normal3(MeshPolygons[i].Normal);
+               // GL.Normal3(MeshPolygons[i].Normal);
                 for (int j = 0; j < MeshPolygons[i].Vertices.Length; j++)
                 {
+                    GL.Normal3(MeshPolygons[i].Vertices[j]);
                     GL.Vertex3(MeshPolygons[i].Vertices[j]);
                 }
 

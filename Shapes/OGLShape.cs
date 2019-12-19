@@ -31,12 +31,14 @@ namespace OpenTKTut.Shapes
     class OGLShape
     {
         public bool EnableAutoRotate { get; set; }
+        public Vector3 planet { get; set; }
+        public bool RotateAroundPlanet { get; set; }
         public Vector3 RotateAround { get; set; }
         public bool IsAnchor = true;
         public Vector3 RotationVector = Vector3.UnitY;
         public Vector3 Center { get; set; }
-        public int speed = 1;
-        public MeshElement[] MeshPolygons { get => meshPolygons; set => meshPolygons = value; }
+        public float speed = 1;
+        public MeshElement[] MeshPolygons { get ; set ; }
 
         public OGLShape(Vector3 center)
         {
@@ -83,6 +85,28 @@ namespace OpenTKTut.Shapes
                 //1-reverse translation
                 GL.Translate(Center.X, Center.Y, -Center.Z);
 
+                if (RotateAroundPlanet)
+                {
+                    //1- Translate to the origin [reverse the previous translation]
+                    GL.Translate(-Center.X, -Center.Y, Center.Z);
+                    //2- Translate to the new center
+                    GL.Translate(planet.X,
+                                 planet.Y,
+                                 -planet.Z);
+                    //rotate in the new axes 
+                    GL.Rotate(_rotateAngle, RotationVector);
+                    // this (speed < 10 ? speed : 1) is there because for speeds 
+                    // more than 10 my machine faced a wierd glitches
+                    _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
+                    /////////////// reverse //////////////////
+                    //2- Translate to the new center
+                    GL.Translate(-planet.X,
+                                 -planet.Y,
+                                 planet.Z);
+                    //1-reverse translation
+                    GL.Translate(Center.X, Center.Y, -Center.Z);
+
+                }
                 //////////////and remove this comment one too
                 // }
             }
