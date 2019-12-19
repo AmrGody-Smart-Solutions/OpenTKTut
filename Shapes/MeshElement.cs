@@ -39,9 +39,18 @@ namespace OpenTKTut.Shapes
             Normal = normal;
             Vertices = vertices;
         }
+           public MeshElement(int order, Vector3[] normals, Vector3[] vertices)
+        {
+            Order = order;
+            Normals = normals;
+            Vertices = vertices;
+        }
+
 
         public int Order { get; private set; }
         public Vector3 Normal { get; private set; }
+        public Vector3[] Normals { get; private set; }
+
         public Vector3[] Vertices { get; private set; }
     }
 }
