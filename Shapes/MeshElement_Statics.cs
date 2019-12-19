@@ -71,6 +71,19 @@ namespace OpenTKTut.Shapes
             // 1 ===== 4
             // |       |
             // 2 ===== 3
+
+
+              /*  
+             *  
+             *    5 -- - - - 8
+             *  / |        / |
+             * 1 - - - - 4   |
+             * |  |      |   |
+             * |  6 - -- | - 7
+             * |/        | /  
+             * 2 - - - - 3
+             * 
+             */
             List<MeshElement> res = new List<MeshElement>();
 
            //front 
