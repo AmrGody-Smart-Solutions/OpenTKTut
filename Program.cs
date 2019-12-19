@@ -30,11 +30,13 @@ namespace OpenTKTut
 {
     class Program
     {
-        static float[] sunColor = { 0.25f, 0.15f, 0.0f };
+        static float[] sunColor = { 0.6f, 0.4f, 0.0f };
         static float[] planetColor = { 0.4f, 0.0f, 0.0f };
         static float[] planetColor2 = { 0.04f, 0.02f, 0.3f };
 
-        static float[] moonColor = { 0.8f, 0.8f, 0.8f };
+        static float[] moonColor1 = { 0.8f, 0.8f, 0.8f };
+        static float[] moonColor2 = { 0.6f, 0.6f, 0.6f };
+
         static void Main(string[] args)
         {
             SceenEngine sceenEngine = new SceenEngine();
@@ -48,14 +50,14 @@ namespace OpenTKTut
             };
             sceenEngine.AddShape(planet1);
 
-            Sphere moon1_1 = new Sphere(new Vector3(15.0f, 0.0f, 50.0f), 0.5, true, moonColor) { 
+            Sphere moon1_1 = new Sphere(new Vector3(15.0f, 0.0f, 50.0f), 0.5, true, moonColor1) { 
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
                 planet = planet1.Center,
                 speed = 1f
             };
             sceenEngine.AddShape(moon1_1);
-            Sphere moon1_2 = new Sphere(new Vector3(5.0f, 0.0f, 50.0f), 0.7, true, moonColor)
+            Sphere moon1_2 = new Sphere(new Vector3(5.0f, 0.0f, 50.0f), 0.7, true, moonColor1)
             {
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
@@ -71,7 +73,16 @@ namespace OpenTKTut
                 speed = 0.5f
 
             };
-            sceenEngine.AddShape(planet2); 
+            sceenEngine.AddShape(planet2);
+            Sphere moon2_2 = new Sphere(new Vector3(25.0f, 0.0f, 50.0f), 1, true, moonColor2)
+            {
+                RotateAround = sun.Center,
+                RotateAroundPlanet = true,
+                planet = planet2.Center,
+                speed = 0.25f,
+            };
+            sceenEngine.AddShape(moon2_2);
+            
             sceenEngine.Start();
             //sceenEngine.AddShape()
         }

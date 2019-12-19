@@ -35,9 +35,11 @@ namespace OpenTKTut
     partial class SceenEngine
     {
         GameWindow _window { get; set; }
+        public MyView v;
         public SceenEngine()
         {
             _window = new GameWindow(800, 600);
+           v = new MyView(Vector2.Zero);
             InitializeObjects();
             SetEvents();
         }

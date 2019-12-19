@@ -37,6 +37,7 @@ namespace OpenTKTut
         private void InitializeObjects()
         {
             _drawingList = new List<OGLShape>();
+
         }
 
         private void SetEvents()
@@ -86,7 +87,7 @@ namespace OpenTKTut
         {
             GL.LoadIdentity();
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
+            this.v.ApplyTransform();
             for (int i = 0; i < _drawingList.Count; i++)
             {
                 _drawingList[i].Draw();
@@ -103,17 +104,52 @@ namespace OpenTKTut
             {
                 
                 Random rand = new Random();
-                Sphere randomSphere = new Sphere(new Vector3(rand.Next(0, 20), rand.Next(0, 5), rand.Next(50, 60)),
+                Sphere randomSphere = new Sphere(new Vector3(rand.Next(15, 30), rand.Next(0, 5), 50.0f),
                                                  rand.Next(1, 4), true, new float[] {rand.Next(0,10)/10f,
                                                                                   rand.Next(0,10)/10f,
                                                                                   rand.Next(0,10)/10f}) { 
-                RotateAround = new Vector3(0.0f,0.0f,0.50f),
-                RotationVector = rand.Next(0, 2) * Vector3.UnitY + rand.Next(0, 2) * Vector3.UnitZ  
+                RotateAround = new Vector3(0.0f,0.0f,50.0f),
+                RotationVector = Vector3.UnitY,
+                speed = rand.Next(0,5)
                 };
                 AddShape(randomSphere);
+            }
+            if (state.IsKeyDown(Key.Up) && lastKeyPressed.IsKeyUp(Key.Up))
+            {
+                v.Update(Vector2.Zero,0.25f,0.0f);
+            }
+            if (state.IsKeyDown(Key.Down) && lastKeyPressed.IsKeyUp(Key.Down))
+            {
+                v.Update(Vector2.Zero, -0.25f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.Left) && lastKeyPressed.IsKeyUp(Key.Left))
+            {
+                v.Update(Vector2.Zero, 0.0f, 0.2f);
+            }
+            if (state.IsKeyDown(Key.Right) && lastKeyPressed.IsKeyUp(Key.Right))
+            {
+                v.Update(Vector2.Zero, 0.0f, -0.2f);
+            }
+            if (state.IsKeyDown(Key.S) && lastKeyPressed.IsKeyUp(Key.S))
+            {
+                v.Update(new Vector2(0.0f,1.0f), 0.0f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.W) && lastKeyPressed.IsKeyUp(Key.W))
+            {
+                v.Update(new Vector2(0.0f, -1.0f), 0.0f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.D) && lastKeyPressed.IsKeyUp(Key.D))
+            {
+                v.Update(new Vector2(-1.0f, 0.0f), 0.0f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.A) && lastKeyPressed.IsKeyUp(Key.A))
+            {
+                v.Update(new Vector2(1.0f, 0.0f), 0.0f, 0.0f);
             }
             lastKeyPressed = state;
             _window.SwapBuffers();
         }
     }
 }
+
+
