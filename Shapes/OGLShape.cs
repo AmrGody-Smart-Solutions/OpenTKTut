@@ -30,13 +30,17 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System.Drawing;
 namespace OpenTKTut.Shapes
 {
     public class OGLShape
     {
+        public OGLShape(){}
         public bool EnableAutoRotate { get; set; }
         public bool EnableMasterRotate { get; set; }
 
+        public Vector3 Color_ {get; set;}
+        public Color Color_sys {get; set;}
         public OGLShape Master { get; set; }
         public Vector3 Center { get; set; }
         
@@ -54,6 +58,7 @@ namespace OpenTKTut.Shapes
 
         private MeshElement[] meshPolygons;
 
+        public int Tex_index { get; set; }
         public virtual void Draw()
         {
             void recursiveRotate(OGLShape shape=null, OGLShape shape_slave = null)

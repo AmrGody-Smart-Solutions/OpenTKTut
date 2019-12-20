@@ -29,17 +29,25 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System.Drawing;
+
 namespace OpenTKTut.Shapes
 {
     class Cube : OGLShape
     {
-        public Cube(Vector3 center, float length,bool enableRotation = false)
+        public Cube(Vector3 center, float length,
+                    bool enableRotation = false, Color color = default(Color))
         {
             Center = center;
             Length = length;
             EnableAutoRotate = enableRotation;
             rotation_speed = 1;
             rotationAxis = new Vector3(1f, 1f, 0f);
+            if (color == default(Color))
+            {
+                color = Color.White;
+            }
+            Color_sys = color;
         }
 
        
@@ -52,7 +60,7 @@ namespace OpenTKTut.Shapes
             MeshPolygons = MeshElement.Cube(Length);
             
             GL.Begin(PrimitiveType.Quads);
-            GL.Color3(System.Drawing.Color.Red);
+            GL.Color3(Color_sys);
             for (int i = 0; i < MeshPolygons.Length; i++)
             {
 

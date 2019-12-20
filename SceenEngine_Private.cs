@@ -1,4 +1,4 @@
-/*H**********************************************************************
+﻿/*H**********************************************************************
 * FILENAME :        SceenEngine_Private.cs             DESIGN REF: OGLTUT05
 *
 * DESCRIPTION :
@@ -36,9 +36,12 @@ namespace OpenTKTut
     partial class SceenEngine
     {
         private List<OGLShape> _drawingList;
+        //TODO use dictionary for texture
+        public List<Texture_> Tex { get; set; }
         private void InitializeObjects()
         {
             _drawingList = new List<OGLShape>();
+            Tex = new List<Texture_>();
         }
         
         private void SetEvents()
@@ -63,7 +66,8 @@ namespace OpenTKTut
             GL.Enable(EnableCap.Light0);
            // GL.ShadeModel(ShadingModel.Smooth);
             GL.Enable(EnableCap.Texture2D);
-            Texture tex = new Texture(@"texture/BigEarth.bmp");
+            Tex.Add(new Texture_()); // use no texture
+            Tex.Add(new Texture_(@"texture/BigEarth.bmp")); // use first texture
         }
 
         private void _window_Resize(object sender, EventArgs e)
@@ -96,6 +100,7 @@ namespace OpenTKTut
             
             for(int i=0;i<_drawingList.Count;i++)
             {
+                Tex[_drawingList[i].Tex_index].Use();
                 _drawingList[i].Draw();
             }
             

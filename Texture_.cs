@@ -7,15 +7,21 @@ using System.Drawing.Imaging;
 
 namespace OpenTKTut
 {
-    class Texture
+    public class Texture_
     {
         int Handle { get; set; }
-        public Texture(String path)
+        
+        public Texture_()
+        {
+
+        }
+
+
+        public Texture_(String path)
         {
             Handle = GL.GenTexture();
-            GL.BindTexture(TextureTarget.Texture2D, Handle);
-
             BitmapData bmpdata = load(path);
+            Use();
             
             GL.TexImage2D(TextureTarget.Texture2D,
                           0, PixelInternalFormat.Rgb,
@@ -24,6 +30,7 @@ namespace OpenTKTut
                           bmpdata.Scan0
                           );
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
+            UnUse();
         }
         BitmapData load(String path){
                         //Load the image
@@ -37,6 +44,14 @@ namespace OpenTKTut
 
             bmp.UnlockBits(bmp_data);
             return bmp_data;
+        }
+        public void Use()
+        {
+            GL.BindTexture(TextureTarget.Texture2D, Handle);
+        }
+        public void UnUse()
+        {
+            GL.BindTexture(TextureTarget.Texture2D, 0);
         }
     }
 }

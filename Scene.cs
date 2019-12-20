@@ -13,21 +13,24 @@ public class Scene
     {
 
         Cube cube1 = new Cube(new Vector3(-10.0f, -7.0f, 35.0f), 5.0f, true);
+        cube1.Tex_index = 1;
         sceenEngine.AddShape(cube1);
 
         Cube cube2 = new Cube(new Vector3(10.0f, -10.0f, 60.0f), 3.0f, true);
+        cube2.Tex_index = 1;
         sceenEngine.AddShape(cube2);
 
         Cube cube3 = new Cube(new Vector3(10.0f, -10.0f, 40.0f), 3.0f, true);
+        cube3.Tex_index = 1;
         sceenEngine.AddShape(cube3);
 
         Sphere sp = new Sphere(new Vector3(-20.0f, 20.0f, 80.0f), 5, true);
-        sp.Color = Colors.blue;
+        sp.Color_ = Colors.blue;
         sceenEngine.AddShape(sp);
 
 
         sp = new Sphere(new Vector3(0.0f, 0f, 30.0f), 3, false);
-        sp.Color = Colors.blue;
+        sp.Color_ = Colors.blue;
         sceenEngine.AddShape(sp);
         cube3.Rotate(sp, 10);
     }
@@ -48,6 +51,7 @@ public class Scene
 
         Cube cube = new Cube(new Vector3(0f, 0f, 80f),sun_size);
         cube.Rotate();
+        cube.Tex_index = 1;
         sceenEngine.AddShape(cube);
     }
     public void solar_system_3d(SceenEngine sceenEngine)
