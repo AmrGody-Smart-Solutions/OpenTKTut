@@ -150,19 +150,19 @@ namespace OpenTKTut.Shapes
             Vector3[] normals_down  = points_normals(new int[] {2,6,7,3},normals);
             Vector3[] normals_up    = points_normals(new int[] {1,4,8,5},normals);
 
-            // res.Add(new MeshElement(4, normals_front, vertices_front ));
-            // res.Add(new MeshElement(4, normals_rear, vertices_rear));
-            // res.Add(new MeshElement(4, normals_right, vertices_right));
-            // res.Add(new MeshElement(4, normals_left, vertices_left));
-            // res.Add(new MeshElement(4, normals_down, vertices_down));
-            // res.Add(new MeshElement(4, normals_up, vertices_up));
+            res.Add(new MeshElement(4, normals_front, vertices_front));
+            res.Add(new MeshElement(4, normals_rear, vertices_rear));
+            res.Add(new MeshElement(4, normals_right, vertices_right));
+            res.Add(new MeshElement(4, normals_left, vertices_left));
+            res.Add(new MeshElement(4, normals_down, vertices_down));
+            res.Add(new MeshElement(4, normals_up, vertices_up));
 
-            res.Add(new MeshElement(4, normal_front1234, vertices_front ));
-            res.Add(new MeshElement(4, normal_rear5876, vertices_rear));
-            res.Add(new MeshElement(4, normal_right1562, vertices_right));
-            res.Add(new MeshElement(4, normal_left3784, vertices_left));
-            res.Add(new MeshElement(4, normal_down2673, vertices_down));
-            res.Add(new MeshElement(4, normal_up1485, vertices_up));
+            //res.Add(new MeshElement(4, normal_front1234, vertices_front ));
+            //res.Add(new MeshElement(4, normal_rear5876, vertices_rear));
+            //res.Add(new MeshElement(4, normal_right1562, vertices_right));
+            //res.Add(new MeshElement(4, normal_left3784, vertices_left));
+            //res.Add(new MeshElement(4, normal_down2673, vertices_down));
+            //res.Add(new MeshElement(4, normal_up1485, vertices_up));
 
 
 

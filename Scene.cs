@@ -42,6 +42,14 @@ public class Scene
         cube.Rotate(sun, 1.5f * sun_size);
         sceenEngine.AddShape(cube);
     }
+    public void big_cube(SceenEngine sceenEngine)
+    {
+        float sun_size = 20f;
+
+        Cube cube = new Cube(new Vector3(0f, 0f, 80f),sun_size);
+        cube.Rotate();
+        sceenEngine.AddShape(cube);
+    }
     public void solar_system_3d(SceenEngine sceenEngine)
     {
         float sun_size = 4f;

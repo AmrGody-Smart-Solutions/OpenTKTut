@@ -58,8 +58,15 @@ namespace OpenTKTut.Shapes
 
                 for (int j = 0; j < MeshPolygons[i].Vertices.Length; j++)
                 {
-                    GL.Normal3(MeshPolygons[i].Normal);
-                    // GL.Normal3(MeshPolygons[i].Normals[j]);
+                    switch (j)
+                    {
+                        case 0:GL.TexCoord2(0,1);break;
+                        case 1:GL.TexCoord2(0,0);break;
+                        case 2:GL.TexCoord2(1,0);break;
+                        case 3:GL.TexCoord2(1,1);break;
+                    }
+                    //GL.Normal3(MeshPolygons[i].Normal);
+                    GL.Normal3(MeshPolygons[i].Normals[j]);
                     GL.Vertex3(MeshPolygons[i].Vertices[j]);
                 }
 

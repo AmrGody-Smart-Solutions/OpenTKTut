@@ -1,4 +1,4 @@
-﻿/*H**********************************************************************
+/*H**********************************************************************
 * FILENAME :        SceenEngine_Private.cs             DESIGN REF: OGLTUT05
 *
 * DESCRIPTION :
@@ -62,8 +62,8 @@ namespace OpenTKTut
             //GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 1.0f, 1.0f, 0.0f });
             GL.Enable(EnableCap.Light0);
            // GL.ShadeModel(ShadingModel.Smooth);
-            
-           // GL.Enable(EnableCap.Texture2D);
+            GL.Enable(EnableCap.Texture2D);
+            Texture tex = new Texture(@"texture/BigEarth.bmp");
         }
 
         private void _window_Resize(object sender, EventArgs e)
