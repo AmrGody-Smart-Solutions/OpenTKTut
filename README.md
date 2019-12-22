@@ -1,6 +1,6 @@
 # OpenTKTut
-[use this invite link to see code in my private repo](https://github.com/HMS-ELKHOLY/OpenTKTut_/invitations)
-[you need solarsystem branch in the private repo](https://github.com/HMS-ELKHOLY/OpenTKTut_/tree/SolarSystem)
+- [use this invite link to see code in my private repo](https://github.com/HMS-ELKHOLY/OpenTKTut_/invitations)
+- [you need solarsystem branch in the private repo](https://github.com/HMS-ELKHOLY/OpenTKTut_/tree/SolarSystem)
 
 ## changes :
 
