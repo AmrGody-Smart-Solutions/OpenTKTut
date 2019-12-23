@@ -91,7 +91,7 @@ namespace OpenTKTut.Shapes
                 GL.Rotate(angle_rotate_far_center_plant.Z, Vector3.UnitZ);
                 GL.Rotate(angle_rotate_far_center_plant.Y, Vector3.UnitY);
                 //rotate object around axis
-                GL.Rotate(_rotateAngle_other_place_plant, Vector3.UnitZ);
+                GL.Rotate(_rotateAngle_other_place_plant*2, Vector3.UnitZ);
                 GL.Rotate(-angle_rotate_far_center_plant.Y, Vector3.UnitY);
                 GL.Rotate(-angle_rotate_far_center_plant.Z, Vector3.UnitZ);
                 GL.Rotate(-angle_rotate_far_center_plant.X, Vector3.UnitX);

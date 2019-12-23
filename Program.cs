@@ -68,17 +68,17 @@ namespace OpenTKTut
             sp.speed_sun = 1;
             sceenEngine.AddShape(sp);
 
-            sp = new Shapes.Sphere(new Vector3(015.0f, 10.0f, 80.0f), 1, new Vector3(0.0f, 0.0f, 80.0f), new Vector3(0, 0, 0), true, true);
+            sp = new Shapes.Sphere(new Vector3(22.0f, 13.0f, 80.0f), 1, new Vector3(0.0f, 0.0f, 80.0f), new Vector3(0, 0, 0), true, true);
 
             sp.speed_sun = 1;
             sp.speed_plant = 5;
             sp.Center_rotate_plant=(new Vector3(20.0f, 10.0f, 80.0f));
-            sp.angle_rotate_far_center_plant=(new Vector3(0, 45, 4));
+            sp.angle_rotate_far_center_plant=(new Vector3(30, 45, 70));
             sp.EnableAutoRotate_at_other_place_plant = true;
             sp.Color = new float[3];
             sp.Color[0] = 1.00f;
             sp.Color[1] = 0.00f;
-            sp.Color[2] = 1.00f;
+            sp.Color[2] = 0.00f;
             sceenEngine.AddShape(sp);
 
 
@@ -124,8 +124,8 @@ namespace OpenTKTut
 
             sceenEngine.AddShape(sp);
             sp.Color = new float[3];
-            sp.Color[0] = 0.50f;
-            sp.Color[1] = 0.50f;
+            sp.Color[0] = 1.00f;
+            sp.Color[1] = 0.250f;
             sp.Color[2] = 1.00f;
 
             sp = new Shapes.Sphere(new Vector3(015.0f, 20.0f, 80.0f), 1, new Vector3(0.0f, 0.0f, 80.0f), new Vector3(0, 0, 0), true, true);
@@ -138,7 +138,7 @@ namespace OpenTKTut
             sp.Color = new float[3];
             sp.Color[0] = 0.00f;
             sp.Color[1] = 0.50f;
-            sp.Color[2] = 1.00f;
+            sp.Color[2] = 0.00f;
             sceenEngine.AddShape(sp);
 
             sceenEngine.Start();
