@@ -24,6 +24,10 @@
 *
 *******************************************************************************H*/
 
+using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 namespace OpenTKTut.Shapes
@@ -39,43 +43,34 @@ namespace OpenTKTut.Shapes
         public Vector3 Center { get; set; }
         public float speed = 1;
         public MeshElement[] MeshPolygons { get ; set ; }
-
+        public Bitmap bitmap;
+        public int texture;
+        
         public OGLShape(Vector3 center)
         {
             RotateAround = center;
+          
         }
 
         protected float _rotateAngle;
-        private MeshElement[] meshPolygons;
 
         public virtual void Draw()
         {
             GL.PushMatrix();
             GL.Translate(Center.X, Center.Y, -Center.Z);
 
+        
             if (EnableAutoRotate)
             {
-                /////////////remove the following comment
-                /*if (IsAnchor)
-                {
-                        GL.Rotate(_rotateAngle, RotationVector);
-                        _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
-                }
-
-                else
-                {
-                */
-
-                //1- Translate to the origin [reverse the previous translation]
+                //1- Translate to the origin 
                 GL.Translate(-Center.X, -Center.Y, Center.Z);
                 //2- Translate to the new center
                 GL.Translate(RotateAround.X,
                              RotateAround.Y,
                              -RotateAround.Z);
-                //rotate in the new axes 
                 GL.Rotate(_rotateAngle, RotationVector);
-                // this (speed < 10 ? speed : 1) is there because for speeds 
-                // more than 10 my machine faced a wierd glitches
+                // this (speed < 10 ? speed : 1) is there because of angular velocities 
+                // more than 10 result wierd glitches
                 _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
                 /////////////// reverse //////////////////
                 //2- Translate to the new center
@@ -107,8 +102,7 @@ namespace OpenTKTut.Shapes
                     GL.Translate(Center.X, Center.Y, -Center.Z);
 
                 }
-                //////////////and remove this comment one too
-                // }
+               
             }
 
             ShapeDrawing();

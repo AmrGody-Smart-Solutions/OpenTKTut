@@ -10,7 +10,7 @@ namespace OpenTKTut
 {
     class MyView
     {
-        private float zoom, rotation;
+    private float zoom, rotation;
     private Vector2 position;
     public MyView(Vector2 position, float zoom = 1.0f, float rotation = 0.0f)
     {

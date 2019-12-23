@@ -28,12 +28,16 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using OpenTKTut.Shapes;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+
 namespace OpenTKTut
 {
     partial class SceenEngine
     {
         private List<OGLShape> _drawingList;
-        float angle = 50.0f;
+
         private void InitializeObjects()
         {
             _drawingList = new List<OGLShape>();
@@ -56,7 +60,7 @@ namespace OpenTKTut
             GL.Enable(EnableCap.Lighting);
 
             GL.Enable(EnableCap.ColorMaterial);
-
+ 
             GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 0.0f, 10.0f,15f});
             GL.Light(LightName.Light0, LightParameter.SpotDirection, new float[] { 1.0f, 1.0f, 1.0f });
             GL.Light(LightName.Light0, LightParameter.Diffuse, new float[] { 1.0f, 1.0f, 1.0f });
@@ -91,11 +95,13 @@ namespace OpenTKTut
             for (int i = 0; i < _drawingList.Count; i++)
             {
                 _drawingList[i].Draw();
+
             }
+
 
             KeyboardState state = Keyboard.GetState();
 
-            if (state.IsKeyDown(Key.Escape))
+            if (state.IsKeyDown(Key.Escape) || state.IsKeyDown(Key.Q))
             {
                 _window.Exit();
             }
@@ -104,48 +110,49 @@ namespace OpenTKTut
             {
                 
                 Random rand = new Random();
-                Sphere randomSphere = new Sphere(new Vector3(rand.Next(15, 30), rand.Next(0, 5), 50.0f),
+                Sphere randomSphere = new Sphere(new Vector3(rand.Next(15, 30), rand.Next(0, 5), rand.Next(50, 70)),
                                                  rand.Next(1, 4), true, new float[] {rand.Next(0,10)/10f,
                                                                                   rand.Next(0,10)/10f,
                                                                                   rand.Next(0,10)/10f}) { 
                 RotateAround = new Vector3(0.0f,0.0f,50.0f),
                 RotationVector = Vector3.UnitY,
-                speed = rand.Next(0,5)
+                speed = rand.Next(1,8)
                 };
                 AddShape(randomSphere);
             }
-            if (state.IsKeyDown(Key.Up) && lastKeyPressed.IsKeyUp(Key.Up))
+            if (state.IsKeyDown(Key.Up))
             {
-                v.Update(Vector2.Zero,0.25f,0.0f);
+                v.Update(Vector2.Zero,0.05f,0.0f);
             }
-            if (state.IsKeyDown(Key.Down) && lastKeyPressed.IsKeyUp(Key.Down))
+            if (state.IsKeyDown(Key.Down))
             {
-                v.Update(Vector2.Zero, -0.25f, 0.0f);
+                v.Update(Vector2.Zero, -0.05f, 0.0f);
             }
-            if (state.IsKeyDown(Key.Left) && lastKeyPressed.IsKeyUp(Key.Left))
+            if (state.IsKeyDown(Key.Left))
             {
-                v.Update(Vector2.Zero, 0.0f, 0.2f);
+                v.Update(Vector2.Zero, 0.0f, 0.05f);
             }
-            if (state.IsKeyDown(Key.Right) && lastKeyPressed.IsKeyUp(Key.Right))
+            if (state.IsKeyDown(Key.Right))
             {
-                v.Update(Vector2.Zero, 0.0f, -0.2f);
+                v.Update(Vector2.Zero, 0.0f, -0.05f);
             }
-            if (state.IsKeyDown(Key.S) && lastKeyPressed.IsKeyUp(Key.S))
+            if (state.IsKeyDown(Key.S))
             {
-                v.Update(new Vector2(0.0f,1.0f), 0.0f, 0.0f);
+                v.Update(new Vector2(0.0f,0.2f), 0.0f, 0.0f);
             }
-            if (state.IsKeyDown(Key.W) && lastKeyPressed.IsKeyUp(Key.W))
+            if (state.IsKeyDown(Key.W))
             {
-                v.Update(new Vector2(0.0f, -1.0f), 0.0f, 0.0f);
+                v.Update(new Vector2(0.0f, -0.2f), 0.0f, 0.0f);
             }
-            if (state.IsKeyDown(Key.D) && lastKeyPressed.IsKeyUp(Key.D))
+            if (state.IsKeyDown(Key.D))
             {
-                v.Update(new Vector2(-1.0f, 0.0f), 0.0f, 0.0f);
+                v.Update(new Vector2(-0.2f, 0.0f), 0.0f, 0.0f);
             }
-            if (state.IsKeyDown(Key.A) && lastKeyPressed.IsKeyUp(Key.A))
+            if (state.IsKeyDown(Key.A))
             {
-                v.Update(new Vector2(1.0f, 0.0f), 0.0f, 0.0f);
+                v.Update(new Vector2(0.2f, 0.0f), 0.0f, 0.0f);
             }
+            
             lastKeyPressed = state;
             _window.SwapBuffers();
         }

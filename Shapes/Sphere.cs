@@ -25,6 +25,9 @@
 *******************************************************************************H*/
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,14 +37,17 @@ namespace OpenTKTut.Shapes
 {
     class Sphere : OGLShape
     {
+
         public float[] Color;
+
+
 
         public Sphere(Vector3 center,
                       double radius,
                       bool AutoRotate,
                       float[] color) : base(center)
         {
-
+           
             Center = center;
             Radius = radius;
             EnableAutoRotate = AutoRotate;
@@ -58,6 +64,8 @@ namespace OpenTKTut.Shapes
             MeshPolygons = MeshElement.Sphere(Radius);
             GL.Begin(BeginMode.Quads);
             GL.Color3(Color);
+
+           
             for (int i = 0; i < MeshPolygons.Length; i++)
             {
                // GL.Normal3(MeshPolygons[i].Normal);

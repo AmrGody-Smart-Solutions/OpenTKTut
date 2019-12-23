@@ -45,51 +45,13 @@ namespace OpenTKTut.Shapes
                 for (int phi = 0; phi <= 360 - dlta; phi += dlta)
                 {
 
-                    
-                    //1 ===== 4 ===== 5
-                    //|       |       |
-                    //2 ===== 3 ===== 6
-                    //|       |       |
-                    //7 ===== 8 ===== 9
-                    //--> phi
-                    // |
-                    // \/ theta
-                    //1 === 2
-                    //|     |
-                    //4 === 3
-
-                    
-                    // 1 ===== 4
-                    // |       |
-                    // 2 ===== 3
+                   
                     Vector3 _1 = GetCartezianOf(radius, theta, phi);
                     Vector3 _2 = GetCartezianOf(radius, theta + dlta, phi);
                     Vector3 _3 = GetCartezianOf(radius, theta + dlta, phi + dlta);
                     Vector3 _4 = GetCartezianOf(radius, theta, phi + dlta);
 
-                  /*  Vector3 _1 = GetCartezianOf(radius, theta, phi);
-                    Vector3 _2 = GetCartezianOf(radius, theta + dlta, phi);
-                    Vector3 _3 = GetCartezianOf(radius, theta + dlta, phi + dlta);
-                    Vector3 _4 = GetCartezianOf(radius, theta, phi + dlta);
-
-                    
-                    Vector3 _5 = GetCartezianOf(radius, theta , phi + 2*dlta);
-                    Vector3 _6 = GetCartezianOf(radius, theta + dlta, phi + 2* dlta);
-                    Vector3 _7 = GetCartezianOf(radius, theta + 2*dlta, phi);
-                    Vector3 _8 = GetCartezianOf(radius, theta + 2*dlta, phi +dlta);
-                    Vector3 _9 = GetCartezianOf(radius, theta + 2 * dlta, phi + 2* dlta);
-
-
-
-
-                    Vector3 normal1 = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_3, _6, _8);
-                    Vector3 normal2 = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_3, _4, _6);
-                    Vector3 normal3 = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_3, _2, _4);
-                    Vector3 normal4 = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_3, _2, _8);
-                    Vector3 normal = 1/4 * (normal1 + normal2 + normal3 + normal4);
-
-                    */
-
+        
 
                     Vector3 normal = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_1, _2, _4);
                     //Vector3 normal = GetNormal(_1, _2, _4);
