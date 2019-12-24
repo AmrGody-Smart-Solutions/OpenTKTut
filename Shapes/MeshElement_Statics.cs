@@ -70,6 +70,8 @@ namespace OpenTKTut.Shapes
         }
 
 
+
+
         private static Vector3 GetNormalOfVertix(double radius, int theta, int phi, int dlta)
         {
 

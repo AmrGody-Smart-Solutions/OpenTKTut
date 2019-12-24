@@ -41,17 +41,17 @@ namespace OpenTKTut
         {
             SceenEngine sceenEngine = new SceenEngine();
 
-            Sphere sun = new Sphere(new Vector3(0.0f, 0.0f, 50.0f), 4.5, true, sunColor) { };
+            Sphere sun = new Sphere(new Vector3(0.0f, -1.0f, 50.0f), 4.5, true, sunColor) { };
             sceenEngine.AddShape(sun);
 
-            Sphere planet1 = new Sphere(new Vector3(10.0f, 0.0f, 50.0f), 1.5, true, planetColor)
+            Sphere planet1 = new Sphere(new Vector3(10.0f, -1.0f, 50.0f), 1.5, true, planetColor)
             {
                 RotateAround = sun.Center,
                 speed = 2
             };
             sceenEngine.AddShape(planet1);
 
-            Sphere moon1_1 = new Sphere(new Vector3(15.0f, 0.0f, 50.0f), 0.5, true, moonColor1)
+            Sphere moon1_1 = new Sphere(new Vector3(15.0f, -1.0f, 50.0f), 0.5, true, moonColor1)
             {
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
@@ -59,7 +59,7 @@ namespace OpenTKTut
                 speed = 1f
             };
             sceenEngine.AddShape(moon1_1);
-            Sphere moon1_2 = new Sphere(new Vector3(5.0f, 0.0f, 50.0f), 0.7, true, moonColor1)
+            Sphere moon1_2 = new Sphere(new Vector3(5.0f, -1.0f, 50.0f), 0.7, true, moonColor1)
             {
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
@@ -68,7 +68,7 @@ namespace OpenTKTut
             };
             sceenEngine.AddShape(moon1_2);
 
-            Sphere planet2 = new Sphere(new Vector3(20.0f, 0.0f, 50.0f), 2.5, true, planetColor2)
+            Sphere planet2 = new Sphere(new Vector3(20.0f, -1.0f, 50.0f), 2.5, true, planetColor2)
             {
                 RotateAround = sun.Center,
                 RotationVector = Vector3.UnitY,
@@ -76,7 +76,7 @@ namespace OpenTKTut
 
             };
             sceenEngine.AddShape(planet2);
-            Sphere moon2_2 = new Sphere(new Vector3(25.0f, 0.0f, 50.0f), 1, true, moonColor2)
+            Sphere moon2_2 = new Sphere(new Vector3(25.0f, -1.0f, 50.0f), 1, true, moonColor2)
             {
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
@@ -85,22 +85,52 @@ namespace OpenTKTut
             };
             sceenEngine.AddShape(moon2_2);
 
-            Sphere planet3 = new Sphere(new Vector3(35.0f, 0.0f, 50.0f), 1.0f, true, new float[] { 0.6f, 1.6f, 0.6f })
+            Sphere planet3 = new Sphere(new Vector3(27.0f, -1.0f, 50.0f), 1.0f, true, new float[] { 0.6f, 1.6f, 0.6f })
             {
                 RotateAround = sun.Center,
                 RotationVector = Vector3.UnitY,
-                speed = 1f
+                speed = 2f
 
             };
             sceenEngine.AddShape(planet3);
-            Sphere moon3_1 = new Sphere(new Vector3(37.0f, 0.0f, 50.0f), 0.5, true, new float[] { 0.6f, 1.6f, 0.6f })
+            Sphere moon3_1 = new Sphere(new Vector3(29.0f, -1.0f, 50.0f), 0.5, true, new float[] { 0.6f, 0.8f, 0.6f })
             {
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
                 planet = planet3.Center,
-                speed = 0.5f,
+                speed = 1f,
             };
             sceenEngine.AddShape(moon3_1);
+
+            Orbit o = new Orbit(new Vector3(0.0f, 0.0f, 50.0f), 10.0f,false, new float[] { 1.0f, 1.0f, 1.0f });
+            sceenEngine.AddShape(o);
+
+            o = new Orbit(new Vector3(0.0f, 0.0f, 50.0f), 20.0f, false, new float[] { 1.0f, 1.0f, 1.0f });
+            sceenEngine.AddShape(o);
+
+            o = new Orbit(new Vector3(0.0f, 0.0f, 50.0f), 27.0f, false ,new float[] { 1.0f, 1.0f, 1.0f });
+            sceenEngine.AddShape(o);
+
+            Orbit o2 = new Orbit(new Vector3(27.0f, 0.0f, 50.0f), 2.0f, true, new float[] { 1.0f, 1.0f, 1.0f })
+            {
+                RotateAround = sun.Center,
+                speed = 2f
+            };
+            sceenEngine.AddShape(o2);
+
+            o2 = new Orbit(new Vector3(10.0f, 0.0f, 50.0f), 5.0f, true, new float[] { 1.0f, 1.0f, 1.0f })
+            {
+                RotateAround = sun.Center,
+                speed = 2f
+            };
+            sceenEngine.AddShape(o2);
+
+            o2 = new Orbit(new Vector3(20.0f, 0.0f, 50.0f), 5.0f, true, new float[] { 1.0f, 1.0f, 1.0f })
+            {
+                RotateAround = sun.Center,
+                speed = 0.5f
+            };
+            sceenEngine.AddShape(o2);
 
             sceenEngine.Start();
             //sceenEngine.AddShape()

@@ -30,7 +30,7 @@ namespace OpenTKTut
     {
         Matrix4 transfrom = Matrix4.Identity;
         transfrom = Matrix4.Mult(transfrom, Matrix4.CreateTranslation(-position.X,-position.Y,0)); // change the x and y bcuz 2 dimentions camera position
-        transfrom = Matrix4.Mult(transfrom, Matrix4.CreateRotationY(rotation)); //rotate around the z axis
+        transfrom = Matrix4.Mult(transfrom, Matrix4.CreateRotationX(rotation)); //rotate around the z axis
         transfrom = Matrix4.Mult(transfrom, Matrix4.CreateScale(zoom,zoom,1.0f)); //zoom in the x and y but not z
 
         GL.MultMatrix(ref transfrom);

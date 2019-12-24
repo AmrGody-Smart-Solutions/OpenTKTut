@@ -47,7 +47,6 @@ namespace OpenTKTut.Shapes
                       bool AutoRotate,
                       float[] color) : base(center)
         {
-           
             Center = center;
             Radius = radius;
             EnableAutoRotate = AutoRotate;
