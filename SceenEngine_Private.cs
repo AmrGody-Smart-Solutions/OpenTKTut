@@ -67,10 +67,9 @@ namespace OpenTKTut
             GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 10.0f, 0.0f, 0.0f});
             GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 0.1f, 0.05f, 0.015f });
             GL.Enable(EnableCap.Light0);
-
+            GL.Enable(EnableCap.Texture2D);
             GL.ShadeModel(ShadingModel.Smooth);
 
-            GL.Enable(EnableCap.Texture2D);
         }
 
         private void _window_Resize(object sender, EventArgs e)

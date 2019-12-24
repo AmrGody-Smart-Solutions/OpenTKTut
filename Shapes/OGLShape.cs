@@ -43,8 +43,7 @@ namespace OpenTKTut.Shapes
         public Vector3 Center { get; set; }
         public float speed = 1;
         public MeshElement[] MeshPolygons { get ; set ; }
-        public Bitmap bitmap;
-        public int texture;
+
         
         public OGLShape(Vector3 center)
         {

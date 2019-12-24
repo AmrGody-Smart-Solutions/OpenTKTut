@@ -37,11 +37,7 @@ namespace OpenTKTut.Shapes
 
                 GL.Vertex3((double)x, -1.0,z);
 
-                /*for (int j = 0; j < MeshPolygons[i].Vertices.Length; j++)
-                {
-                    GL.Normal3(MeshPolygons[i].Vertices[j]);
-                    GL.Vertex3(MeshPolygons[i].Vertices[j]);
-                }*/
+      
 
             }
             GL.End();

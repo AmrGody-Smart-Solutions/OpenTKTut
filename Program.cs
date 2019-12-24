@@ -41,11 +41,12 @@ namespace OpenTKTut
         {
             SceenEngine sceenEngine = new SceenEngine();
 
-            Sphere sun = new Sphere(new Vector3(0.0f, -1.0f, 50.0f), 4.5, true, sunColor) { };
+            Sphere sun = new Sphere(new Vector3(0.0f, -1.0f, 50.0f), 4.5, true, sunColor,"sun.jpg") { };
             sceenEngine.AddShape(sun);
 
             Sphere planet1 = new Sphere(new Vector3(10.0f, -1.0f, 50.0f), 1.5, true, planetColor)
             {
+
                 RotateAround = sun.Center,
                 speed = 2
             };
