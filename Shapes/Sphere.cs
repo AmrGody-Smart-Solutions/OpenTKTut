@@ -77,6 +77,7 @@ namespace OpenTKTut.Shapes
        
         protected override void ShapeDrawing()
         {
+            GL.BindTexture(TextureTarget.Texture2D, tex_id);
             base.ShapeDrawing();
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons = MeshElement.Sphere(Radius);

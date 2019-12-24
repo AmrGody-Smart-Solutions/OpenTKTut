@@ -63,6 +63,8 @@ namespace OpenTKTut.Shapes
 
         public virtual void Draw()
         {
+
+           
             GL.PushMatrix();
             // GL.Color3(Color[0],Color[1],Color[2]  );
 
