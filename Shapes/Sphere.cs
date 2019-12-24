@@ -79,20 +79,32 @@ namespace OpenTKTut.Shapes
         {
             base.ShapeDrawing();
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
-            MeshPolygons= MeshElement.Sphere(Radius);
+            MeshPolygons = MeshElement.Sphere(Radius);
+
             GL.Begin(BeginMode.Quads);
-            GL.Color3(Color[0], Color[1], Color[2]);
-            int x = 0;
-            for(int i=0;i< MeshPolygons.Length;i++)
+            // Console.WriteLine(c);
+            Vector2 p = new Vector2();
+            Vector3 p3 = new Vector3();
+            // List <Vector2> p2 = new List<Vector2>();
+            GL.Color3(new float[] { 1.0f, 1.0f, 0.0f });
+            for (int i = 0; i < MeshPolygons.Length; i++)
             {
-                
-            
-
-                for (int j=0;j< MeshPolygons[i].Vertices.Length;j++)
+                for (int j = 0; j < MeshPolygons[i].Vertices.Length; j++)
                 {
-                    GL.Normal3(MeshPolygons[i].Vertices[j].Normalized());
+                    GL.Normal3(MeshPolygons[i].Vertices[j]);
+                    p3 = MeshPolygons[i].Vertices[j];
+                    if (tex_enable)
+                    {
+                        p3.Normalize();
+                        p.X = 0.5f + Convert.ToSingle(Math.Atan2(p3.X, p3.Z)) / (2.0f * Convert.ToSingle(Math.PI));
+                        p.Y = 0.5f - Convert.ToSingle(Math.Asin(p3.Y)) / (Convert.ToSingle(Math.PI));
+                        GL.TexCoord2(p);
+                    }
+                    else
 
-
+                    {
+                        GL.Color3(Color);
+                    }
                     GL.Vertex3(MeshPolygons[i].Vertices[j]);
                 }
                
