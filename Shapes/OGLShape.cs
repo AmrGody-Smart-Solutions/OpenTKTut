@@ -44,7 +44,6 @@ namespace OpenTKTut.Shapes
         public float speed = 1;
         public MeshElement[] MeshPolygons { get ; set ; }
 
-        
         public OGLShape(Vector3 center)
         {
             RotateAround = center;
@@ -57,8 +56,8 @@ namespace OpenTKTut.Shapes
         {
             GL.PushMatrix();
             GL.Translate(Center.X, Center.Y, -Center.Z);
+           
 
-        
             if (EnableAutoRotate)
             {
                 //1- Translate to the origin 
@@ -92,6 +91,7 @@ namespace OpenTKTut.Shapes
                     // this (speed < 10 ? speed : 1) is there because for speeds 
                     // more than 10 my machine faced a wierd glitches
                     _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
+
                     /////////////// reverse //////////////////
                     //2- Translate to the new center
                     GL.Translate(-planet.X,

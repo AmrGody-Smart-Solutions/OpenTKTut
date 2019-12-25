@@ -39,7 +39,7 @@ namespace OpenTKTut.Shapes
     class Sphere : OGLShape
     {
 
-        public float[] Color;
+        public float[] Color = new float[] {1.0f,1.0f,1.0f };
         int texture;
         Bitmap bitmap;
         String textureName;
@@ -47,13 +47,13 @@ namespace OpenTKTut.Shapes
         public Sphere(Vector3 center,
                       double radius,
                       bool AutoRotate,
-                      float[] color,
-                      String textureName="earth.jpg") : base(center)
+
+                      String textureName="meteor.jpg") : base(center)
         {
             Center = center;
             Radius = radius;
             EnableAutoRotate = AutoRotate;
-            Color = color;
+
             this.textureName = textureName;
             //texture
 
@@ -88,9 +88,7 @@ namespace OpenTKTut.Shapes
             MeshPolygons = MeshElement.Sphere(Radius);
             GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color);
-            Console.Write(texture);
 
-            Console.Write("after: " + texture + "\n");
             for (int i = 0; i < MeshPolygons.Length; i++)
             {
                // GL.Normal3(MeshPolygons[i].Normal);

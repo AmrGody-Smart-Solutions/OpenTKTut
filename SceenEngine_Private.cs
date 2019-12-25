@@ -60,11 +60,11 @@ namespace OpenTKTut
             GL.Enable(EnableCap.Lighting);
 
             GL.Enable(EnableCap.ColorMaterial);
- 
-            GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 0.0f, 10.0f,15f});
+
+            GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 0.0f, 10.0f, 15f });
             GL.Light(LightName.Light0, LightParameter.SpotDirection, new float[] { 1.0f, 1.0f, 1.0f });
             GL.Light(LightName.Light0, LightParameter.Diffuse, new float[] { 1.0f, 1.0f, 1.0f });
-            GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 10.0f, 0.0f, 0.0f});
+            GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 10.0f, 0.0f, 0.0f });
             GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 0.1f, 0.05f, 0.015f });
             GL.Enable(EnableCap.Light0);
             GL.Enable(EnableCap.Texture2D);
@@ -108,21 +108,26 @@ namespace OpenTKTut
 
             if (state.IsKeyDown(Key.R) && lastKeyPressed.IsKeyUp(Key.R))
             {
-                
+
                 Random rand = new Random();
-                Sphere randomSphere = new Sphere(new Vector3(rand.Next(15, 30), rand.Next(0, 5), rand.Next(50, 70)),
-                                                 rand.Next(1, 4), true, new float[] {rand.Next(0,10)/10f,
-                                                                                  rand.Next(0,10)/10f,
-                                                                                  rand.Next(0,10)/10f}) { 
-                RotateAround = new Vector3(0.0f,0.0f,50.0f),
-                RotationVector = Vector3.UnitY,
-                speed = rand.Next(1,8)
+                Sphere randomSphere = new Sphere(new Vector3(rand.Next(15, 30),
+                                                             rand.Next(1, 5) / 10,
+                                                             rand.Next(50, 70)),
+                                                             rand.Next(1, 3),
+                                                             true)
+                {
+                    Color = new float[] {1.0f,
+                                        0.2f,
+                                        0.0f},
+                    RotateAround = new Vector3(0.0f, 0.0f, 50.0f),
+                    RotationVector = Vector3.UnitY,
+                    speed = rand.Next(7, 10)
                 };
                 AddShape(randomSphere);
             }
             if (state.IsKeyDown(Key.Up))
             {
-                v.Update(Vector2.Zero,0.05f,0.0f);
+                v.Update(Vector2.Zero, 0.05f, 0.0f);
             }
             if (state.IsKeyDown(Key.Down))
             {
@@ -138,7 +143,7 @@ namespace OpenTKTut
             }
             if (state.IsKeyDown(Key.S))
             {
-                v.Update(new Vector2(0.0f,0.2f), 0.0f, 0.0f);
+                v.Update(new Vector2(0.0f, 0.2f), 0.0f, 0.0f);
             }
             if (state.IsKeyDown(Key.W))
             {
@@ -152,7 +157,7 @@ namespace OpenTKTut
             {
                 v.Update(new Vector2(0.2f, 0.0f), 0.0f, 0.0f);
             }
-            
+
             lastKeyPressed = state;
             _window.SwapBuffers();
         }
