@@ -1,4 +1,4 @@
-﻿using OpenTK;
+using OpenTK;
 using OpenTKTut;
 using OpenTKTut.Shapes;
 using System;
@@ -25,24 +25,28 @@ public class Scene
         sceenEngine.AddShape(cube3);
 
         Sphere sp = new Sphere(new Vector3(-20.0f, 20.0f, 80.0f), 5, true);
-        sp.Color_ = Colors.blue;
+        sp.Color_ = Colors.white_off;
+        sp.Tex_index = 1;
         sceenEngine.AddShape(sp);
 
 
         sp = new Sphere(new Vector3(0.0f, 0f, 30.0f), 3, false);
-        sp.Color_ = Colors.blue;
+        sp.Color_ = Colors.white_off;
+        sp.Tex_index = 1;
         sceenEngine.AddShape(sp);
         cube3.Rotate(sp, 10);
     }
     public void big_sun(SceenEngine sceenEngine)
     {
         float sun_size = 20f;
-        Sphere sun = new Sphere(new Vector3(0f, 0f, 80f), sun_size, color: Colors.yellow_light);
+        Sphere sun = new Sphere(new Vector3(0f, 0f, 80f), sun_size, color: Colors.white_off);
         sun.Rotate();  // rotating around itself
+        sun.Tex_index = 1;
         sceenEngine.AddShape(sun);
 
         Cube cube = new Cube(new Vector3(0f, 0f, 10f), .25f* sun_size);
         cube.Rotate(sun, 1.5f * sun_size);
+        cube.Tex_index = 1;
         sceenEngine.AddShape(cube);
     }
     public void big_cube(SceenEngine sceenEngine)
@@ -178,8 +182,9 @@ public class Scene
     public void solar_system_top_view(SceenEngine sceenEngine)
     {
         float sun_size = 4f;
-        Sphere sun = new Sphere(new Vector3(0f, 0f, 80f), sun_size, color: Colors.yellow_light);
+        Sphere sun = new Sphere(new Vector3(0f, 0f, 80f), sun_size);
         sun.Rotate();  // rotating around itself
+        sun.Tex_index = 3;
         sceenEngine.AddShape(sun);
 
 
@@ -191,6 +196,9 @@ public class Scene
                     distance: 1.3f * sun_size);
         sceenEngine.AddShape(mercury);
 
+        Orbit orbit = new Orbit(mercury);
+        sceenEngine.AddShape(orbit);
+
         Sphere venus = new Sphere(default(Vector3), .2f * sun_size, color: Colors.red_yellow);
         venus.Rotate(sun,
                     speed: 2f,
@@ -198,11 +206,14 @@ public class Scene
                     distance: 1.8f * sun_size);
         sceenEngine.AddShape(venus);
 
-        Sphere earth = new Sphere(default(Vector3), .3 * sun_size, color: Colors.blue);
+        Sphere earth = new Sphere(default(Vector3), .3 * sun_size);
         earth.Rotate(sun,
                     speed: 1.5f,
                     axis: new Vector3(0f, 0f, 1f),
                     distance: 2.5f * sun_size);
+        earth.Color_sys = System.Drawing.Color.White;
+        earth.Rotate(speed:10);
+        earth.Tex_index = 1;
         sceenEngine.AddShape(earth);
 
         Sphere moon = new Sphere(default(Vector3),
@@ -216,11 +227,13 @@ public class Scene
 
 
 
-        Sphere mars = new Sphere(default(Vector3), .4 * sun_size, color: Colors.red);
+        Sphere mars = new Sphere(default(Vector3), .4 * sun_size);
         mars.Rotate(sun,
                     speed: 1.2f,
                     axis: new Vector3(0f, 0f, 1f),
                     distance: 3f * sun_size);
+        mars.Tex_index = 2;
+        mars.Rotate();
         sceenEngine.AddShape(mars);
 
         Sphere mars_moon = new Sphere(default(Vector3),

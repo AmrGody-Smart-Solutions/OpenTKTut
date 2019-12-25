@@ -1,4 +1,4 @@
-/*H**********************************************************************
+﻿/*H**********************************************************************
 * FILENAME :        SceenEngine_Private.cs             DESIGN REF: OGLTUT05
 *
 * DESCRIPTION :
@@ -68,6 +68,8 @@ namespace OpenTKTut
             GL.Enable(EnableCap.Texture2D);
             Tex.Add(new Texture_()); // use no texture
             Tex.Add(new Texture_(@"texture/BigEarth.bmp")); // use first texture
+            Tex.Add(new Texture_(@"texture/mars.bmp"));
+            Tex.Add(new Texture_(@"texture/sun.bmp"));
         }
 
         private void _window_Resize(object sender, EventArgs e)
