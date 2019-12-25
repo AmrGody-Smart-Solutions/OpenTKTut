@@ -40,7 +40,6 @@ namespace OpenTKTut
         static void Main(string[] args)
         {
             SceenEngine sceenEngine = new SceenEngine();
-            Background.initBackground();
             Sphere sun = new Sphere(new Vector3(0.0f, -1.0f, 50.0f), 4.5, true, "sun.jpg")
             {
                 Color = sunColor
