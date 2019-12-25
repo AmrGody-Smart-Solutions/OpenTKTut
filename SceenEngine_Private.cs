@@ -24,23 +24,27 @@
 *******************************************************************************H*/
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
-using OpenTKTut.Shapes; 
+using OpenTKTut.Shapes;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+
+
 namespace OpenTKTut
 {
     partial class SceenEngine
     {
         private List<OGLShape> _drawingList;
+
         private void InitializeObjects()
         {
             _drawingList = new List<OGLShape>();
+
         }
-        
+
         private void SetEvents()
         {
             _window.RenderFrame += _window_RenderFrame;
@@ -52,37 +56,39 @@ namespace OpenTKTut
         {
             GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             GL.Enable(EnableCap.DepthTest);
-            //Lights
 
+            //Lights
             GL.Enable(EnableCap.Lighting);
-            //GL.Enable(EnableCap.ColorMaterial);
-            GL.Light(LightName.Light0, LightParameter.Position, new float[] { 20.0f, 0.0f,40.0f });
-            //GL.Light(LightName.Light0, LightParameter.Diffuse,new float[] { 1.0f, 1.0f, 1.0f });
-            GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 1.0f, 0.0f, 0.0f });
-            GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 1.0f, 1.0f, 0.0f });
+
+            GL.Enable(EnableCap.ColorMaterial);
+
             GL.Enable(EnableCap.Light0);
-           // GL.ShadeModel(ShadingModel.Smooth);
-            
-           // GL.Enable(EnableCap.Texture2D);
+            GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 20.0f, 50.0f, 1.0f });
+            GL.Light(LightName.Light0, LightParameter.ConstantAttenuation, new float[] { 2.5f, 0.0f, 0.0f });
+            //enable texture
+            GL.Enable(EnableCap.Texture2D);
+            GL.ShadeModel(ShadingModel.Smooth);
+
         }
 
         private void _window_Resize(object sender, EventArgs e)
         {
-           
+
             GL.Viewport(0, 0, _window.Width, _window.Height);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            //GL.Ortho(0, 100, 0, 100, -1, 1);
-            //GL.Frustum(0, 100, 0, 100, 1, 100);
-            Matrix4 prespective = Matrix4.CreatePerspectiveFieldOfView(45.0f * 3.14f / 180.0f, _window.Width / _window.Height, 1.0f, 100.0f);
-           
-           // Matrix4 prespective = Matrix4.CreatePerspectiveOffCenter(-150.0f, 150.0f, -150.0f, 150.0f, 1.0f, 100.0f);
+            Matrix4 prespective = Matrix4.CreatePerspectiveFieldOfView(50.0f * 3.14f / 180.0f, _window.Width / _window.Height, 1.0f, 100.0f);
+
             GL.LoadMatrix(ref prespective);
             GL.MatrixMode(MatrixMode.Modelview);
         }
 
+
+        KeyboardState lastKeyPressed;
+
         private void _window_RenderFrame(object sender, OpenTK.FrameEventArgs e)
         {
+
 
             //exit window if escape pressed
             KeyboardState input = Keyboard.GetState();     
@@ -93,13 +99,78 @@ namespace OpenTKTut
 
             GL.LoadIdentity();
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            
-            for(int i=0;i<_drawingList.Count;i++)
+            this.v.ApplyTransform();
+
+            for (int i = 0; i < _drawingList.Count; i++)
             {
                 _drawingList[i].Draw();
+
             }
-            
+
+
+            KeyboardState state = Keyboard.GetState();
+
+            if (state.IsKeyDown(Key.Escape) || state.IsKeyDown(Key.Q))
+            {
+                _window.Exit();
+            }
+
+            if (state.IsKeyDown(Key.R) && lastKeyPressed.IsKeyUp(Key.R))
+            {
+
+                Random rand = new Random();
+                Sphere randomSphere = new Sphere(new Vector3(rand.Next(15, 30),
+                                                             rand.Next(1, 5) / 10,
+                                                             rand.Next(50, 70)),
+                                                             rand.Next(1, 3),
+                                                             true)
+                {
+                    Color = new float[] {1.0f,
+                                        0.2f,
+                                        0.0f},
+                    RotateAround = new Vector3(0.0f, 0.0f, 50.0f),
+                    RotationVector = Vector3.UnitY,
+                    speed = rand.Next(7, 10)
+                };
+                AddShape(randomSphere);
+            }
+            if (state.IsKeyDown(Key.Up))
+            {
+                v.Update(Vector2.Zero, 0.05f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.Down))
+            {
+                v.Update(Vector2.Zero, -0.05f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.Left))
+            {
+                v.Update(Vector2.Zero, 0.0f, 0.05f);
+            }
+            if (state.IsKeyDown(Key.Right))
+            {
+                v.Update(Vector2.Zero, 0.0f, -0.05f);
+            }
+            if (state.IsKeyDown(Key.W))
+            {
+                v.Update(new Vector2(0.0f, 0.2f), 0.0f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.S))
+            {
+                v.Update(new Vector2(0.0f, -0.2f), 0.0f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.D))
+            {
+                v.Update(new Vector2(-0.2f, 0.0f), 0.0f, 0.0f);
+            }
+            if (state.IsKeyDown(Key.A))
+            {
+                v.Update(new Vector2(0.2f, 0.0f), 0.0f, 0.0f);
+            }
+
+            lastKeyPressed = state;
             _window.SwapBuffers();
         }
     }
 }
+
+

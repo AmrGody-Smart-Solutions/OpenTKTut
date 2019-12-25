@@ -35,13 +35,14 @@ namespace OpenTKTut
     partial class SceenEngine
     {
         GameWindow _window { get; set; }
+        public MyView v;
         public SceenEngine()
         {
             _window = new GameWindow(800, 600);
+           v = new MyView(Vector2.Zero);
             InitializeObjects();
+            v.Update(new Vector2(0.0f, 10.0f),0.0f,0.2f);
             SetEvents();
-            
-
         }
         public void Start()
         {
