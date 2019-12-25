@@ -23,11 +23,6 @@
 * 1       1       24OCT19 AG      first working version
 *
 *******************************************************************************H*/
-
-using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 namespace OpenTKTut.Shapes
@@ -42,12 +37,12 @@ namespace OpenTKTut.Shapes
         public Vector3 RotationVector = Vector3.UnitY;
         public Vector3 Center { get; set; }
         public float speed = 1;
-        public MeshElement[] MeshPolygons { get ; set ; }
+        public MeshElement[] MeshPolygons { get; set; }
 
         public OGLShape(Vector3 center)
         {
             RotateAround = center;
-          
+
         }
 
         protected float _rotateAngle;
@@ -56,52 +51,15 @@ namespace OpenTKTut.Shapes
         {
             GL.PushMatrix();
             GL.Translate(Center.X, Center.Y, -Center.Z);
-           
+
 
             if (EnableAutoRotate)
             {
-                //1- Translate to the origin 
-                GL.Translate(-Center.X, -Center.Y, Center.Z);
-                //2- Translate to the new center
-                GL.Translate(RotateAround.X,
-                             RotateAround.Y,
-                             -RotateAround.Z);
-                GL.Rotate(_rotateAngle, RotationVector);
-                // this (speed < 10 ? speed : 1) is there because of angular velocities 
-                // more than 10 result wierd glitches
-                _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
-                /////////////// reverse //////////////////
-                //2- Translate to the new center
-                GL.Translate(-RotateAround.X,
-                             -RotateAround.Y,
-                             RotateAround.Z);
-                //1-reverse translation
-                GL.Translate(Center.X, Center.Y, -Center.Z);
-
+                Rotate(Center, RotateAround, speed);
                 if (RotateAroundPlanet)
                 {
-                    //1- Translate to the origin [reverse the previous translation]
-                    GL.Translate(-Center.X, -Center.Y, Center.Z);
-                    //2- Translate to the new center
-                    GL.Translate(planet.X,
-                                 planet.Y,
-                                 -planet.Z);
-                    //rotate in the new axes 
-                    GL.Rotate(_rotateAngle, RotationVector);
-                    // this (speed < 10 ? speed : 1) is there because for speeds 
-                    // more than 10 my machine faced a wierd glitches
-                    _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
-
-                    /////////////// reverse //////////////////
-                    //2- Translate to the new center
-                    GL.Translate(-planet.X,
-                                 -planet.Y,
-                                 planet.Z);
-                    //1-reverse translation
-                    GL.Translate(Center.X, Center.Y, -Center.Z);
-
+                    Rotate(Center, planet, speed);
                 }
-               
             }
 
             ShapeDrawing();
@@ -113,6 +71,28 @@ namespace OpenTKTut.Shapes
             // Add any common drawing for all shapes in this part
         }
 
+        private void Rotate(Vector3 center, Vector3 Around, float s)
+        {
+            //1- Translate to the origin [reverse the previous translation]
+            GL.Translate(-center.X, -center.Y, center.Z);
+            //2- Translate to the new center
+            GL.Translate(Around.X,
+                         Around.Y,
+                         -Around.Z);
+            //rotate in the new axes 
+            GL.Rotate(_rotateAngle, RotationVector);
+            // this (speed < 10 ? speed : 1) is there because for speeds 
+            // more than 10 my machine faced a wierd glitches
+            _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (s < 10 ? s : 1) : _rotateAngle - 360;
+
+            /////////////// reverse //////////////////
+            //2- Translate to the new center
+            GL.Translate(-Around.X,
+                         -Around.Y,
+                         Around.Z);
+            //1-reverse translation
+            GL.Translate(center.X, center.Y, -center.Z);
+        }
 
     }
 }

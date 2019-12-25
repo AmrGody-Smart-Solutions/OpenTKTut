@@ -61,10 +61,10 @@ namespace OpenTKTut
 
             GL.Enable(EnableCap.ColorMaterial);
 
-            GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 0.0f, 10.0f, 15f });
-            GL.Light(LightName.Light0, LightParameter.SpotDirection, new float[] { 1.0f, 1.0f, 1.0f });
-            GL.Light(LightName.Light0, LightParameter.Diffuse, new float[] { 1.0f, 1.0f, 1.0f });
-            GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 10.0f, 0.0f, 0.0f });
+            GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 0.0f, 45.0f });
+            //GL.Light(LightName.Light0, LightParameter.SpotDirection, new float[] { 1.0f, 1.0f, 1.0f });
+            //GL.Light(LightName.Light0, LightParameter.Diffuse, new float[] { 1.0f, 1.0f, 1.0f });
+            //GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 10.0f, 0.0f, 0.0f });
             GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 0.1f, 0.05f, 0.015f });
             GL.Enable(EnableCap.Light0);
             GL.Enable(EnableCap.Texture2D);
@@ -86,12 +86,14 @@ namespace OpenTKTut
 
 
         KeyboardState lastKeyPressed;
+
         private void _window_RenderFrame(object sender, OpenTK.FrameEventArgs e)
         {
 
             GL.LoadIdentity();
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             this.v.ApplyTransform();
+
             for (int i = 0; i < _drawingList.Count; i++)
             {
                 _drawingList[i].Draw();
