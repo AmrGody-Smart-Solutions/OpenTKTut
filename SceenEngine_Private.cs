@@ -1,4 +1,4 @@
-﻿/*H**********************************************************************
+/*H**********************************************************************
 * FILENAME :        SceenEngine_Private.cs             DESIGN REF: OGLTUT05
 *
 * DESCRIPTION :
@@ -31,6 +31,7 @@ using OpenTKTut.Shapes;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+
 
 namespace OpenTKTut
 {
@@ -87,6 +88,14 @@ namespace OpenTKTut
 
         private void _window_RenderFrame(object sender, OpenTK.FrameEventArgs e)
         {
+
+
+            //exit window if escape pressed
+            KeyboardState input = Keyboard.GetState();     
+            if (input.IsKeyDown(Key.Escape))
+            {
+                _window.Exit();
+            }
 
             GL.LoadIdentity();
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
