@@ -18,7 +18,6 @@ namespace OpenTKTut.Shapes
 
             GL.GenTextures(1, out int texture);
             GL.BindTexture(TextureTarget.Texture2D, texture);
-            Console.Write("\nbefore: " + texture + "\n");
             GL.TexParameter(TextureTarget.Texture2D,
                             TextureParameterName.TextureMinFilter,
                             (int)TextureMinFilter.Linear);
