@@ -1,4 +1,4 @@
-﻿/*H**********************************************************************
+/*H**********************************************************************
 * FILENAME :        SceenEngine_Private.cs             DESIGN REF: OGLTUT05
 *
 * DESCRIPTION :
@@ -78,7 +78,7 @@ namespace OpenTKTut
             GL.LoadIdentity();
             //GL.Ortho(0, 100, 0, 100, -1, 1);
             //GL.Frustum(0, 100, 0, 100, 1, 100);
-            Matrix4 prespective = Matrix4.CreatePerspectiveFieldOfView(45.0f * 3.14f / 180.0f, _window.Width / _window.Height, 1.0f, 100.0f);
+            Matrix4 prespective = Matrix4.CreatePerspectiveFieldOfView(45.0f * 3.14f / 180.0f, _window.Width / _window.Height, 1.0f, 1000.0f);
            
            // Matrix4 prespective = Matrix4.CreatePerspectiveOffCenter(-150.0f, 150.0f, -150.0f, 150.0f, 1.0f, 100.0f);
             GL.LoadMatrix(ref prespective);
@@ -93,6 +93,68 @@ namespace OpenTKTut
             if (input.IsKeyDown(Key.Escape))
             {
                 _window.Exit();
+            }
+            if (input.IsKeyDown(Key.A))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Rotate(-1, Vector3.UnitY);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+            if (input.IsKeyDown(Key.D))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Rotate(1, Vector3.UnitY);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+
+            if (input.IsKeyDown(Key.W))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Rotate(-1, Vector3.UnitX);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+            if (input.IsKeyDown(Key.S))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Rotate(1, Vector3.UnitX);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+            if (input.IsKeyDown(Key.Up))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Translate(0,-1,0);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+            if (input.IsKeyDown(Key.Down))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Translate(0, 1, 0);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+            if (input.IsKeyDown(Key.Right))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Translate(-1, 0, 0);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+            if (input.IsKeyDown(Key.Left))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Translate(1, 0, 0);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+
+            if (input.IsKeyDown(Key.I))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Translate(0, 0, 1);
+                GL.MatrixMode(MatrixMode.Modelview);
+            }
+            if (input.IsKeyDown(Key.O))
+            {
+                GL.MatrixMode(MatrixMode.Projection);
+                GL.Translate(0, 0, -1);
+                GL.MatrixMode(MatrixMode.Modelview);
             }
 
             GL.LoadIdentity();
