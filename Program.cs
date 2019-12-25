@@ -112,26 +112,7 @@ namespace OpenTKTut
             o = new Orbit(new Vector3(0.0f, 0.0f, 50.0f), 27.0f, false ,new float[] { 1.0f, 1.0f, 1.0f });
             sceenEngine.AddShape(o);
 
-            Orbit o2 = new Orbit(new Vector3(27.0f, 0.0f, 50.0f), 2.0f, true, new float[] { 1.0f, 1.0f, 1.0f })
-            {
-                RotateAround = sun.Center,
-                speed = 2f
-            };
-            sceenEngine.AddShape(o2);
 
-            o2 = new Orbit(new Vector3(10.0f, 0.0f, 50.0f), 5.0f, true, new float[] { 1.0f, 1.0f, 1.0f })
-            {
-                RotateAround = sun.Center,
-                speed = 2f
-            };
-            sceenEngine.AddShape(o2);
-
-            o2 = new Orbit(new Vector3(20.0f, 0.0f, 50.0f), 5.0f, true, new float[] { 1.0f, 1.0f, 1.0f })
-            {
-                RotateAround = sun.Center,
-                speed = 0.5f
-            };
-            sceenEngine.AddShape(o2);
 
             sceenEngine.Start();
             //sceenEngine.AddShape()
