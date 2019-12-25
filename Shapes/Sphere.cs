@@ -48,7 +48,7 @@ namespace OpenTKTut.Shapes
                       double radius,
                       bool AutoRotate,
                       float[] color,
-                      String textureName="moon.jpg") : base(center)
+                      String textureName="earth.jpg") : base(center)
         {
             Center = center;
             Radius = radius;
@@ -57,21 +57,22 @@ namespace OpenTKTut.Shapes
             this.textureName = textureName;
             //texture
 
-            bitmap = new Bitmap(Path.Combine("texture",textureName));
+           bitmap = new Bitmap(Path.Combine("texture",textureName));
 
             GL.GenTextures(1, out texture);
-            //GL.BindTexture(TextureTarget.Texture2D, texture);
+            GL.BindTexture(TextureTarget.Texture2D,texture);
+            Console.Write("\nbefore: "+texture + "\n");
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+            //GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
 
             BitmapData data = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
                 ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, data.Width, data.Height, 0,
                 OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
+            //GL.BindTexture(TextureTarget.Texture2D, 0);
 
             bitmap.UnlockBits(data);
-
             //end
         }
 
@@ -81,13 +82,15 @@ namespace OpenTKTut.Shapes
         protected override void ShapeDrawing()
         {
             base.ShapeDrawing();
+            GL.BindTexture(TextureTarget.Texture2D, texture);
 
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons = MeshElement.Sphere(Radius);
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color);
-            GL.BindTexture(TextureTarget.Texture2D, texture);
+            Console.Write(texture);
 
+            Console.Write("after: " + texture + "\n");
             for (int i = 0; i < MeshPolygons.Length; i++)
             {
                // GL.Normal3(MeshPolygons[i].Normal);
@@ -111,6 +114,7 @@ namespace OpenTKTut.Shapes
                 }
 
             }
+            //GL.BindTexture(TextureTarget.Texture2D, 0);
             GL.End();
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             

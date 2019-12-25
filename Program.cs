@@ -52,6 +52,8 @@ namespace OpenTKTut
             };
             sceenEngine.AddShape(planet1);
 
+
+
             Sphere moon1_1 = new Sphere(new Vector3(15.0f, -1.0f, 50.0f), 0.5, true, moonColor1)
             {
                 RotateAround = sun.Center,

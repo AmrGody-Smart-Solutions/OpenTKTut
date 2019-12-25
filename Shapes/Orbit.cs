@@ -17,14 +17,19 @@ namespace OpenTKTut.Shapes
             this.color = color;
             Radius = radius;
             EnableAutoRotate = autoRotate;
+         //  GL.BindTexture(TextureTarget.Texture2D, 0);
+
         }
 
         public double Radius { get; set; }
         protected override void ShapeDrawing()
         {
             base.ShapeDrawing();
+            GL.BindTexture(TextureTarget.Texture2D, 0);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             GL.Begin(BeginMode.Points);
+           // GL.BindTexture(TextureTarget.Texture2D, 0);
+
             GL.Color3(color);
             float x, z, i;
 

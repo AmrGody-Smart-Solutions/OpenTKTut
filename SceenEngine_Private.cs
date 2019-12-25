@@ -88,6 +88,7 @@ namespace OpenTKTut
         KeyboardState lastKeyPressed;
         private void _window_RenderFrame(object sender, OpenTK.FrameEventArgs e)
         {
+
             GL.LoadIdentity();
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             this.v.ApplyTransform();
