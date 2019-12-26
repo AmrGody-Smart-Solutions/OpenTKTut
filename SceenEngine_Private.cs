@@ -54,11 +54,11 @@ namespace OpenTKTut
             //Lights
 
             GL.Enable(EnableCap.Lighting);
-            //GL.Enable(EnableCap.ColorMaterial);
+           // GL.Enable(EnableCap.ColorMaterial);
             GL.Light(LightName.Light0, LightParameter.Position, new float[] { 20.0f, 0.0f,40.0f });
-            //GL.Light(LightName.Light0, LightParameter.Diffuse,new float[] { 1.0f, 1.0f, 1.0f });
+            GL.Light(LightName.Light0, LightParameter.Diffuse,new float[] { 1.0f, 1.0f, 1.0f });
             GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 1.0f, 0.0f, 0.0f });
-            GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 1.0f, 1.0f, 0.0f });
+            //GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 1.0f, 1.0f, 0.0f });
             GL.Enable(EnableCap.Light0);
            // GL.ShadeModel(ShadingModel.Smooth);
             
@@ -71,9 +71,9 @@ namespace OpenTKTut
             GL.Viewport(0, 0, _window.Width, _window.Height);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            //GL.Ortho(0, 100, 0, 100, -1, 1);
-            //GL.Frustum(0, 100, 0, 100, 1, 100);
-            Matrix4 prespective = Matrix4.CreatePerspectiveFieldOfView(45.0f * 3.14f / 180.0f, _window.Width / _window.Height, 1.0f, 100.0f);
+            GL.Ortho(0, 100, 0, 100, -1, 1);
+            GL.Frustum(0, 100, 0, 100, 70, 200);
+            Matrix4 prespective = Matrix4.CreatePerspectiveFieldOfView(45.0f * 3.14f / 180.0f, (_window.Width+1) / (_window.Height+1 ),0.5f, 400.0f);
            
            // Matrix4 prespective = Matrix4.CreatePerspectiveOffCenter(-150.0f, 150.0f, -150.0f, 150.0f, 1.0f, 100.0f);
             GL.LoadMatrix(ref prespective);

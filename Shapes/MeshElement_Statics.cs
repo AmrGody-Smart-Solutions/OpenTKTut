@@ -37,7 +37,6 @@ namespace OpenTKTut.Shapes
         public static MeshElement[] Sphere(double radius)
         {
             List<MeshElement> res = new List<MeshElement>();
-            
             int dlta = 10;
             double delta = Convert.ToDouble(dlta) * _converter_factor;
             for (int theta = 0;theta<=180-dlta;theta += dlta )
@@ -54,10 +53,12 @@ namespace OpenTKTut.Shapes
                     Vector3 _2 = GetCartezianOf(radius, theta + dlta, phi);
                     Vector3 _3 = GetCartezianOf(radius, theta + dlta, phi + dlta);
                     Vector3 _4 = GetCartezianOf(radius, theta, phi + dlta);
-                    Vector3 normal = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_1, _2, _4);
+                    Vector3 normal = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_1, _2, _3);
                     //Vector3 normal = GetNormal(_1, _2, _4);
                     Vector3[] vertices = { _1, _2, _3, _4 };
-                    res.Add(new MeshElement(4, normal, vertices));
+                    
+                 
+                    res.Add(new MeshElement(4, ((_1+_2+_3+_4)/4).Normalized(), vertices));
 
                 }
             }
