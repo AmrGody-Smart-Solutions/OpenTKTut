@@ -49,7 +49,8 @@ namespace OpenTKTut
             Sphere planet1 = new Sphere(new Vector3(10.0f, -1.0f, 50.0f), 1.5, true, "venus.jpg")
             {
                 RotateAround = sun.Center,
-                speed = 2
+                speed = 2,
+                SelfRotation = true
             };
             sceenEngine.AddShape(planet1);
 
@@ -59,7 +60,7 @@ namespace OpenTKTut
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
                 planet = planet1.Center,
-                speed = 1f
+                speed = 2f
             };
             sceenEngine.AddShape(moon1_1);
             Sphere moon1_2 = new Sphere(new Vector3(5.0f, -1.0f, 50.0f), 0.7, true, "moon.jpg")
@@ -67,7 +68,7 @@ namespace OpenTKTut
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
                 planet = planet1.Center,
-                speed = 1f,
+                speed = 2f,
             };
             sceenEngine.AddShape(moon1_2);
 
@@ -76,7 +77,8 @@ namespace OpenTKTut
 
                 RotateAround = sun.Center,
                 RotationVector = Vector3.UnitY,
-                speed = 0.5f
+                speed = 0.5f,
+                SelfRotation = true
 
             };
             sceenEngine.AddShape(planet2);
@@ -85,7 +87,7 @@ namespace OpenTKTut
                 RotateAround = sun.Center,
                 RotateAroundPlanet = true,
                 planet = planet2.Center,
-                speed = 0.25f,
+                speed = 0.5f,
             };
             sceenEngine.AddShape(moon2_2);
 

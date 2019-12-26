@@ -61,12 +61,10 @@ namespace OpenTKTut
 
             GL.Enable(EnableCap.ColorMaterial);
 
-            GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 0.0f, 45.0f });
-            //GL.Light(LightName.Light0, LightParameter.SpotDirection, new float[] { 1.0f, 1.0f, 1.0f });
-            //GL.Light(LightName.Light0, LightParameter.Diffuse, new float[] { 1.0f, 1.0f, 1.0f });
-            //GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 10.0f, 0.0f, 0.0f });
-            GL.Light(LightName.Light0, LightParameter.Ambient, new float[] { 0.1f, 0.05f, 0.015f });
             GL.Enable(EnableCap.Light0);
+            GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 20.0f, 50.0f, 1.0f });
+            GL.Light(LightName.Light0, LightParameter.ConstantAttenuation, new float[] { 3.0f, 0.0f, 0.0f });
+            //enable texture
             GL.Enable(EnableCap.Texture2D);
             GL.ShadeModel(ShadingModel.Smooth);
 
@@ -143,11 +141,11 @@ namespace OpenTKTut
             {
                 v.Update(Vector2.Zero, 0.0f, -0.05f);
             }
-            if (state.IsKeyDown(Key.S))
+            if (state.IsKeyDown(Key.W))
             {
                 v.Update(new Vector2(0.0f, 0.2f), 0.0f, 0.0f);
             }
-            if (state.IsKeyDown(Key.W))
+            if (state.IsKeyDown(Key.S))
             {
                 v.Update(new Vector2(0.0f, -0.2f), 0.0f, 0.0f);
             }

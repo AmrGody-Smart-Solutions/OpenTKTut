@@ -29,6 +29,7 @@ namespace OpenTKTut.Shapes
 {
     class OGLShape
     {
+        private int selfSpeed = 1;
         public bool EnableAutoRotate { get; set; }
         public Vector3 planet { get; set; }
         public bool RotateAroundPlanet { get; set; }
@@ -38,6 +39,7 @@ namespace OpenTKTut.Shapes
         public Vector3 Center { get; set; }
         public float speed = 1;
         public MeshElement[] MeshPolygons { get; set; }
+        public bool SelfRotation { get; set; }
 
         public OGLShape(Vector3 center)
         {
@@ -52,7 +54,6 @@ namespace OpenTKTut.Shapes
             GL.PushMatrix();
             GL.Translate(Center.X, Center.Y, -Center.Z);
 
-
             if (EnableAutoRotate)
             {
                 Rotate(Center, RotateAround, speed);
@@ -61,6 +62,14 @@ namespace OpenTKTut.Shapes
                     Rotate(Center, planet, speed);
                 }
             }
+
+            if (SelfRotation)
+            {
+                GL.Rotate(_rotateAngle, RotationVector);
+                _rotateAngle = _rotateAngle < 360 ? _rotateAngle + (speed < 10 ? speed : 1) : _rotateAngle - 360;
+
+            }
+
 
             ShapeDrawing();
             GL.PopMatrix();

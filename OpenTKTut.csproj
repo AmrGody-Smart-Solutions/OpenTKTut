@@ -59,6 +59,7 @@
     <Compile Include="Shapes\OGLShape.cs" />
     <Compile Include="Shapes\Sphere.cs" />
     <Compile Include="Shapes\Orbit.cs" />
+    <Compile Include="Shapes\Texture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
