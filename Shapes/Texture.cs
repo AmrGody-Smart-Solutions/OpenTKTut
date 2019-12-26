@@ -13,10 +13,10 @@ namespace OpenTKTut.Shapes
         public static int LoadTexture(String textureName)
         {
             Bitmap bitmap;
-
+            int texture;
             bitmap = new Bitmap(Path.Combine("texture", textureName));
 
-            GL.GenTextures(1, out int texture);
+            GL.GenTextures(1, out texture);
             GL.BindTexture(TextureTarget.Texture2D, texture);
             GL.TexParameter(TextureTarget.Texture2D,
                             TextureParameterName.TextureMinFilter,

@@ -63,7 +63,7 @@ namespace OpenTKTut
 
             GL.Enable(EnableCap.Light0);
             GL.Light(LightName.Light0, LightParameter.Position, new float[] { 0.0f, 20.0f, 50.0f, 1.0f });
-            GL.Light(LightName.Light0, LightParameter.ConstantAttenuation, new float[] { 3.0f, 0.0f, 0.0f });
+            GL.Light(LightName.Light0, LightParameter.ConstantAttenuation, new float[] { 2.5f, 0.0f, 0.0f });
             //enable texture
             GL.Enable(EnableCap.Texture2D);
             GL.ShadeModel(ShadingModel.Smooth);
