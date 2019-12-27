@@ -33,15 +33,13 @@ namespace OpenTKTut.Shapes
 {
     partial class MeshElement
     {
-        public MeshElement(int order, Vector3 normal, Vector3[] vertices)
+        public MeshElement(Vector3[] vertices, Vector2[] texcoord)
         {
-            Order = order;
-            Normal = normal;
             Vertices = vertices;
+            Texcoord = texcoord;
         }
 
-        public int Order { get; private set; }
-        public Vector3 Normal { get; private set; }
         public Vector3[] Vertices { get; private set; }
+        public Vector2[] Texcoord { get; private set; }
     }
 }
