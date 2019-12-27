@@ -29,31 +29,44 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System.Drawing.Imaging;
+
 namespace OpenTKTut.Shapes
 {
     class Cube : OGLShape
     {
-        public Cube(Vector3 center, double length,bool enableRotation = false)
+        public Cube(Vector3 center, double length, bool enableRotation, float RotatingRadius, float moonorbit, int textype)
         {
-            Center = center;
+            _Center = center;
             Length = length;
             EnableAutoRotate = enableRotation;
+            Rotatingradius = RotatingRadius;
+            MoonOrbit = moonorbit;
+            Textype = textype;
         }
 
        
         public double Length { get; set; }
+        public int Textype;
 
         protected override void ShapeDrawing()
         {
             base.ShapeDrawing();
+
+            GL.BindTexture(TextureTarget.Texture2D, Textype);
+
             GL.Begin(BeginMode.Quads);
 
             //Front Face
 
-            GL.Color3(1.0f, 0.0f, 0.0f);
+            GL.Color3(1.0f, 1.0f, 1.0f);
+            GL.TexCoord2(0, 0);
             GL.Vertex3(-Length / 2, -Length / 2, Length / 2);
+            GL.TexCoord2(1, 0);
             GL.Vertex3(Length / 2, -Length / 2, Length / 2);
+            GL.TexCoord2(1, 1);
             GL.Vertex3(Length / 2, Length / 2, Length / 2);
+            GL.TexCoord2(0, 1);
             GL.Vertex3(-Length / 2, Length / 2, Length / 2);
             //Rear Face
 
