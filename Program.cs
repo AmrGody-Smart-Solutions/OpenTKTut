@@ -85,7 +85,7 @@ namespace OpenTKTut
             sp = new Shapes.Sphere(new Vector3(0.0f, 0.0f, 43.0f), 1.75, true, true, false, 2, 10, 2, 0, 0, 3);
             sceenEngine.AddShape(sp);
 
-            sp = new Shapes.Sphere(new Vector3( 0.0f,0.0f,43.0f), 2, true, true, false, 2, 15, 1, 0, 0, 4);              //earth
+            sp = new Shapes.Sphere(new Vector3( 0.0f,0.0f,43.0f), 2, true, true, false, 3, 15, 1, 0, 0, 4);              //earth
             sceenEngine.AddShape(sp);
 
             sp = new Shapes.Sphere(new Vector3(0.0f, 0.0f, 43.0f), 0.5, true, true, true, 1, 15, 1, 2, 2.65f, 5);            //moon
