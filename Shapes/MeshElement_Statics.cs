@@ -33,16 +33,22 @@ namespace OpenTKTut.Shapes
 {
     partial class MeshElement
     {
-        private static  double _converter_factor = Math.PI / 180;
+        private static double  _converter_factor = Math.PI / 180;
+        
+
         public static MeshElement[] Sphere(double radius)
         {
             List<MeshElement> res = new List<MeshElement>();
             
             int dlta = 10;
-            double delta = Convert.ToDouble(dlta) * _converter_factor;
-            for (int theta = 0;theta<=180-dlta;theta += dlta )
+            float s = 36;
+            float t = 0;
+            float s_factor = (dlta/10) / 36f;
+            float t_factor = (dlta/10) / 18f;
+            
+            for (int phi = 0; phi <= 180 - dlta; phi += dlta )//t
             {
-                for (int phi = 0; phi <= 360 - dlta; phi += dlta)
+                for (int theta = 0; theta <= 360 - dlta; theta += dlta)//s
                 {
 
 
@@ -50,16 +56,27 @@ namespace OpenTKTut.Shapes
                     // |       |
                     // 2 ===== 3
 
-                    Vector3 _1 = GetCartezianOf(radius, theta, phi);
-                    Vector3 _2 = GetCartezianOf(radius, theta + dlta, phi);
-                    Vector3 _3 = GetCartezianOf(radius, theta + dlta, phi + dlta);
-                    Vector3 _4 = GetCartezianOf(radius, theta, phi + dlta);
-                    Vector3 normal = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_1, _2, _4);
+                    Vector3 _1 = GetCartezianOf(radius, phi, theta);
+                    Vector2 _1tex = new Vector2(s * s_factor,t * t_factor);
+
+                    Vector3 _2 = GetCartezianOf(radius, phi + dlta, theta);
+                    Vector2 _2tex = new Vector2(s * s_factor,(t+1) * t_factor);
+
+                    Vector3 _3 = GetCartezianOf(radius, phi + dlta, theta + dlta);
+                    Vector2 _3tex = new Vector2((s-1) * s_factor,(t+1) * t_factor);
+
+                    Vector3 _4 = GetCartezianOf(radius, phi, theta + dlta);
+                    Vector2 _4tex = new Vector2((s-1) * s_factor, t * t_factor);
+
+                    //Vector3 normal = theta == 0 ? Vector3.UnitZ : theta == 180 ? -Vector3.UnitZ : GetNormal(_1, _2, _4);
                     //Vector3 normal = GetNormal(_1, _2, _4);
                     Vector3[] vertices = { _1, _2, _3, _4 };
-                    res.Add(new MeshElement(4, normal, vertices));
+                    Vector2[] texcoord = { _1tex, _2tex, _3tex, _4tex };
+                    res.Add(new MeshElement(vertices, texcoord));
+                    s--;
 
                 }
+                t++;
             }
 
 
@@ -93,8 +110,8 @@ namespace OpenTKTut.Shapes
             double th = Convert.ToDouble(theta) * _converter_factor;
             double ph = Convert.ToDouble(phi) * _converter_factor;
             float x = Convert.ToSingle(radius * Math.Sin(th) * Math.Cos(ph));
-            float y = Convert.ToSingle(radius * Math.Sin(th) * Math.Sin(ph));
-            float z = Convert.ToSingle(radius * Math.Cos(th));
+            float z = Convert.ToSingle(radius * Math.Sin(th) * Math.Sin(ph));
+            float y = Convert.ToSingle(radius * Math.Cos(th));
             Vector3 _1 = new Vector3(x, y, z);
             return _1;
         }
