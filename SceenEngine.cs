@@ -32,7 +32,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 namespace OpenTKTut
 {
-    partial class SceenEngine
+    public partial class SceenEngine
     {
         GameWindow _window { get; set; }
         public SceenEngine()

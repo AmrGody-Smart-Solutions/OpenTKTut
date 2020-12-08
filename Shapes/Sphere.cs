@@ -34,11 +34,19 @@ namespace OpenTKTut.Shapes
 {
     class Sphere : OGLShape
     {
-        public Sphere(Vector3 center, double radius,bool AutoRotate = false)
+        
+        public Sphere(Vector3 center, double radius,bool AutoRotate = false,Vector3 color = default(Vector3))
         {
+            if (color == default(Vector3))
+            {
+                color = new Vector3(1f, 1f, 1f);
+            }
             Center = center;
             Radius = radius;
             EnableAutoRotate = AutoRotate;
+            Color_ = color;
+            rotation_speed = 1;
+            rotationAxis = new Vector3(1f, 1f, 0f);
         }
 
         
@@ -49,13 +57,22 @@ namespace OpenTKTut.Shapes
             base.ShapeDrawing();
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             MeshPolygons= MeshElement.Sphere(Radius);
-            GL.Begin(BeginMode.Quads);
-            GL.Color3(new float[] { 1.0f, 1.0f, 0.0f });
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color_);
             for(int i=0;i< MeshPolygons.Length;i++)
             {
-                GL.Normal3(MeshPolygons[i].Normal);
-                for(int j=0;j< MeshPolygons[i].Vertices.Length;j++)
+                //GL.Normal3(MeshPolygons[i].Normal);
+                for (int j=0;j< MeshPolygons[i].Vertices.Length;j++)
                 {
+                    var p = MeshPolygons[i].Vertices[j].Normalized();
+
+                    var u = .5 + Math.Atan2(p.Z, p.X) / (2 * Math.PI);
+                    var v = .5 - Math.Asin(p.Y) / Math.PI;
+                    //var v = .5 - p.Y*.5;
+
+                    GL.TexCoord2(u, v);
+                    // set point normal and postion 
+                    GL.Normal3(MeshPolygons[i].Vertices[j].Normalized());
                     GL.Vertex3(MeshPolygons[i].Vertices[j]);
                 }
                

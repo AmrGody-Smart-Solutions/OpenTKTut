@@ -30,6 +30,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
+using OpenTKTut.Shapes;
+using System.Drawing;
 namespace OpenTKTut
 {
     class Program
@@ -38,32 +40,18 @@ namespace OpenTKTut
         {
             SceenEngine sceenEngine = new SceenEngine();
 
+            Scene s = new Scene();
+            //enable only one
+            //s.solar_moon_earth_sun(sceenEngine);
+            //s.solar_system_3d(sceenEngine);
+            s.solar_system_top_view(sceenEngine);
+            //s.big_sun(sceenEngine);
+            //s.big_cube(sceenEngine);
 
+            //s.original_scene(sceenEngine);
 
-
-            Shapes.Cube cube = new Shapes.Cube(new Vector3(0.0f, 20.0f, 80.0f), 10.0f, true);
-            sceenEngine.AddShape(cube);
-
-            cube = new Shapes.Cube(new Vector3(-10.0f, -7.0f, 35.0f), 5.0f, true);
-            sceenEngine.AddShape(cube);
-
-            cube = new Shapes.Cube(new Vector3(10.0f, -10.0f, 60.0f), 3.0f, true);
-            sceenEngine.AddShape(cube);
-
-            cube = new Shapes.Cube(new Vector3(10.0f, -10.0f, 40.0f), 3.0f, true);
-            sceenEngine.AddShape(cube);
-
-            Shapes.Sphere sp = new Shapes.Sphere(new Vector3( 0.0f,0.0f,50.0f), 5, true);
-            sceenEngine.AddShape(sp);
-
-            sp = new Shapes.Sphere(new Vector3(-20.0f, 20.0f, 80.0f), 5, true);
-            sceenEngine.AddShape(sp);
-
-            sp = new Shapes.Sphere(new Vector3(5.0f, -5.0f, 30.0f), 3, false);
-            sceenEngine.AddShape(sp);
 
             sceenEngine.Start();
-           //sceenEngine.AddShape()
         }
     }
 }

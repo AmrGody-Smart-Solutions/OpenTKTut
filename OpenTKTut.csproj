@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -51,21 +51,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Colors.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SceenEngine.cs" />
     <Compile Include="SceenEngine_Private.cs" />
+    <Compile Include="Scene.cs" />
     <Compile Include="Shapes\Cube.cs" />
     <Compile Include="Shapes\MeshElement.cs" />
     <Compile Include="Shapes\MeshElement_Statics.cs" />
     <Compile Include="Shapes\OGLShape.cs" />
+    <Compile Include="Shapes\SlaveSphere.cs" />
     <Compile Include="Shapes\Sphere.cs" />
+    <Compile Include="Texture_.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Shapes\Shapes.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="texture\BigEarth.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="texture\mars.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="texture\sun.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
